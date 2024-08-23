@@ -6,7 +6,7 @@ export default function SplitSchedule({ splitSchedules, lunch, preps }) {
 
   // Function to calculate height based on duration
   const calculateHeight = (duration) => {
-    const baseHeight = 90; // 30 minutes = 100px
+    const baseHeight = 100; // 30 minutes = 100px
     const height = (duration / 30) * baseHeight;
     return `${height}px`;
   };
@@ -15,7 +15,12 @@ export default function SplitSchedule({ splitSchedules, lunch, preps }) {
   return (
     <div className={styles.splitWrapper}>
       {splitSchedules && Object.entries(splitSchedules).map(([key, splitSchedule], splitIndex) => (
-        <div key={key} className={styles.scheduleColumn}>
+        <div key={key} className={`${styles.scheduleColumn} ${lunch === key ? styles.activeColumn : ''}`}>
+
+          <div className={styles.lunchIndicator}>
+            {key === '6th Grade' ? key : `Lunch ${key.includes('1') ? '1' : '2'}  (7/8th)`}
+          </div>
+
           {splitSchedule.map((splitEvent, nestedIndex) => {
             // Log values to debug
             console.log(`splitEvent.period: ${splitEvent.period}`);
@@ -63,6 +68,10 @@ export default function SplitSchedule({ splitSchedules, lunch, preps }) {
               </div>
             );
           })}
+        {lunch && lunch === key && <div className={styles.lunchIndicator}>
+          Your Schedule
+          </div>}
+
         </div>
       ))}
     </div>

@@ -37,7 +37,7 @@ export default function Home() {
     if (type !== null) {
       localStorage.setItem('type', type);
     }
-    if (type === 'Staff' && scheduleType === 'yourSchedule' && (prep.length === 0 || lunch === null)) {
+    if (type === 'Staff' && scheduleType === 'yourSchedule' && lunch === null) {
       setScheduleType('fullSchedule');
     }
   }, [type]);

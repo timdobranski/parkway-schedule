@@ -7,10 +7,21 @@
   /* border-top: solid rgb(187, 187, 187) 4px; */
   padding-bottom: 1rem;
   /* border-bottom: solid white 4px; */
-  column-gap: .25rem;
+  /* column-gap: .25rem; */
   box-sizing: border-box;
+  /* border: solid black .125rem; */
 }
 
+.lunchIndicator {
+  margin: .5rem 0;
+  padding: .25rem .5rem;
+  background-color: white;
+  color: black;
+}
+.activeColumn {
+  outline: solid white 4px;
+  z-index: 9;
+}
 .scheduleColumn {
   box-sizing: border-box;
   /* position: relative; */
@@ -40,7 +51,9 @@
   color: black;
   border-radius: 0;
   margin: 0;
-  outline: solid .125rem black;
+  /* outline: solid .125rem black; */
+  /* border-top: solid black .125rem; */
+  border: solid black .125rem;
 }
 .classEvent, .lunchEvent, .winEvent {
   height: 120px;
@@ -79,6 +92,34 @@ flex-direction: column;
 justify-content: flex-start;
 align-items: center;
 margin: 0 0rem 0 0rem;
+/* background-color: rgb(255, 132, 132); */
+width: fit-content;
+margin: 0 auto;
+padding: .25rem .5rem;
+}
+/* .classEvent .timeAndDurationWrapper {
+  background-color: rgb(0, 59, 83);
+}
+.passingEvent .timeAndDurationWrapper {
+  background: transparent;
+}
+.lunchEvent .timeAndDurationWrapper {
+  background-color: rgb(209, 26, 59);
+} */
+.lunchEvent .timeAndDurationWrapper {
+  color: rgb(255, 255, 255);
+}
+.lunchEvent .duration {
+  color: rgb(255, 255, 255);
+}
+.classEvent .duration {
+  color: rgb(124, 251, 158);
+}
+.winEvent .timeAndDurationWrapper {
+  /* background-color: rgb(203, 142, 0); */
+}
+.winEvent .duration {
+  color: rgb(0, 0, 0);
 }
 .timeAndDuration {
 margin: 0rem;
@@ -90,8 +131,8 @@ font-size: 1rem;
 .duration {
 font-size: 1rem;
 color: rgb(253, 255, 129);
-border-top: solid 1px rgb(132, 255, 196);
-padding-top: .25rem;
+/* border-top: solid 1px rgb(132, 255, 196);
+padding-top: .25rem; */
 }
 .eventContentWrapper {
 position: relative;
@@ -109,8 +150,12 @@ text-align: center;
 }
 .eventTitle {
   margin: .25rem;
-  margin-bottom: .75rem;
   font-size: 1.25rem;
+
+}
+.classEvent .eventTitle {
+}
+.lunchEvent .eventTitle {
 }
 .prepPeriod {
 position: absolute;

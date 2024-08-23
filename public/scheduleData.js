@@ -1,4 +1,6 @@
+
 const scheduleData = [
+  // monday
   {
     day: "Monday",
     schedule: [
@@ -84,7 +86,7 @@ const scheduleData = [
       },
     ],
   },
-  // Repeat structure for other days (Tuesday, Wednesday, etc.)
+  // tuesday
   {
     day: "Tuesday",
     schedule: [
@@ -137,6 +139,7 @@ const scheduleData = [
       },
     ],
   },
+  // wednesday
   {
     day: "Wednesday",
     schedule: [
@@ -200,6 +203,7 @@ const scheduleData = [
       },
     ],
   },
+  // thursday
   {
     day: "Thursday",
     schedule: [
@@ -285,6 +289,7 @@ const scheduleData = [
       },
     ],
   },
+  // friday
   {
     day: "Friday",
     schedule: [
@@ -370,7 +375,123 @@ const scheduleData = [
       },
     ],
   },
-  // And so on for the rest of the week...
+  // testing thursday
+  {
+    day: "Testing: Thurs, 8/22 & 29",
+    schedule: [
+      {
+        title: "Period 1",
+        startTime: "9:00",
+        endTime: "10:35",
+        duration: "95",
+        type: "class",
+        period: '1'
+      },
+      {
+        title: "Passing",
+        duration: "5",
+        type: "passing",
+      },
+      // Midway split into 3 different schedules
+      {
+        type: "split",
+        splitSchedules: {
+
+            '6th Grade': [
+              { title: "Period 2", startTime: "10:40", endTime: "12:15", duration: "95", type: "class", period: '2' },
+              { title: "6th Lunch", startTime: "12:15", endTime: "12:45", duration: "30", type: "lunch"},
+              { title: "Passing", duration: "5", type: "passing",},
+              { title: "Home Base", startTime: "12:50", endTime: "1:55", duration: "65", type: "win", period: '' },
+            ],
+              "7/8th Grade Lunch 1": [
+                { title: "Home Base", startTime: "10:40", endTime: "11:45", duration: "65", type: "win", period: '' },
+                { title: "Lunch 1", startTime: "11:45", endTime: "12:15", duration: "30", type: "lunch"},
+                { title: "Passing", duration: "5", type: "passing",},
+                { title: "Period 2", startTime: "12:20", endTime: "1:55", duration: "95", type: "class", period: '2' },
+            ],
+            "7/8th Grade Lunch 2": [
+              { title: "Home Base", startTime: "10:40", endTime: "11:45", duration: "65", type: "win", period: '' },
+              { title: "Passing", duration: "5", type: "passing",},
+              { title: "Period 2", startTime: "11:50", endTime: "1:25", duration: "95", type: "class", period: '2' },
+              { title: "Lunch 2", startTime: "1:25", endTime: "1:55", duration: "30", type: "lunch" },
+            ],
+        },
+      },
+      { title: "Passing", duration: "5", type: "passing",},
+      {
+        title: "Period 3",
+        startTime: "2:00",
+        endTime: "3:35",
+        duration: "95",
+        type: "class",
+        period: '3'
+      },
+    ],
+  },
+ // testing friday
+ {
+  day: "Testing: Fri, 8/23 & 30",
+  schedule: [
+    {
+      title: "Period 4",
+      startTime: "9:00",
+      endTime: "10:20",
+      duration: "80",
+      type: "class",
+      period: '4'
+    },
+    {
+      title: "Passing",
+      duration: "5",
+      type: "passing",
+    },
+    {
+      title: "Period 5",
+      startTime: "10:25",
+      endTime: "11:45",
+      duration: "80",
+      type: "class",
+      period: '5'
+    },
+    // Midway split into 3 different schedules
+    {
+      type: "split",
+      splitSchedules: {
+
+          '6th Grade': [
+            { title: "Passing", duration: "5", type: "passing",},
+            { title: "Period 6", startTime: "11:50", endTime: "1:10", duration: "80", type: "class", period: '6' },
+            { title: "6th Lunch", startTime: "1:10", endTime: "1:40", duration: "30", type: "lunch"},
+            { title: "Passing", duration: "5", type: "passing",},
+            { title: "Home Base", startTime: "1:45", endTime: "2:10", duration: "25", type: "win", period: '' },
+          ],
+            "7/8th Grade Lunch 1": [
+              { title: "Lunch 1", startTime: "11:45", endTime: "12:15", duration: "30", type: "lunch"},
+              { title: "Passing", duration: "5", type: "passing",},
+              { title: "Home Base", startTime: "12:20", endTime: "12:45", duration: "25", type: "win", period: '' },
+              { title: "Passing", duration: "5", type: "passing",},
+              { title: "Period 6", startTime: "12:50", endTime: "2:10", duration: "80", type: "class", period: '6' },
+            ],
+          "7/8th Grade Lunch 2": [
+            { title: "Passing", duration: "5", type: "passing",},
+            { title: "Home Base", startTime: "11:50", endTime: "12:10", duration: "25", type: "win", period: '' },
+            { title: "Lunch 2", startTime: "12:15", endTime: "12:45", duration: "30", type: "lunch" },
+            { title: "Passing", duration: "5", type: "passing",},
+            { title: "Period 6", startTime: "12:50", endTime: "2:10", duration: "80", type: "class", period: '6' },
+          ],
+      },
+    },
+    { title: "Passing", duration: "5", type: "passing",},
+    {
+      title: "Period 7",
+      startTime: "2:15",
+      endTime: "3:35",
+      duration: "80",
+      type: "class",
+      period: '7'
+    },
+  ],
+},
 ];
 
 export default scheduleData;

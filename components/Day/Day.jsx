@@ -22,11 +22,11 @@ export default function Day({ dayInfo, type, prep, lunch, scheduleType, setSched
         <div
           className={`${styles.scheduleOption} ${styles.yourScheduleOption} ${scheduleType === 'yourSchedule' ? styles.activeOption : ''}`}
           onClick={() => {
-            if (lunch && (type !== 'Staff' || (type === 'Staff' && prep.length))) {
+            if (lunch) {
               handleScheduleTypeChange('yourSchedule');
             } else {
               if (type === 'Staff') {
-                alert('To view your personal schedule, please select your lunch and prep periods.');
+                alert('To view your personal schedule, please select your lunch and prep periods');
               } else if (type === 'Student') {
                 alert('To view your personal schedule, please select your lunch period.');
               }
