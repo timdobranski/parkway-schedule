@@ -4,6 +4,21 @@
   font-weight: normal;
   font-style: normal;
 }
+@font-face {
+  font-family: 'Louis George Cafe';
+  src: url('../public/fonts/Louis George Cafe Light.ttf') format('truetype');
+  font-weight: 200; /* or 400 */
+}
+@font-face {
+  font-family: 'Louis George Cafe';
+  src: url('../public/fonts/Louis George Cafe.ttf') format('truetype');
+  font-weight: normal; /* or 400 */
+}
+@font-face {
+  font-family: 'Louis George Cafe';
+  src: url('../public/fonts/Louis George Cafe Bold.ttf') format('truetype');
+  font-weight: bold; /* or 700 */
+}
 
 .body {
   margin: 0;
@@ -15,7 +30,7 @@
   background-size: cover;
   background-repeat: no-repeat;
   /* background: linear-gradient(to bottom, #53afe9, #fafafa); */
-  font-family: Future;
+  font-family: Louis George Cafe;
   text-align: center;
   letter-spacing: 0;
   overflow: hidden;
@@ -28,7 +43,7 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-
+  padding-top: 100px;
 }
 
 @media(max-width: 768px) {
