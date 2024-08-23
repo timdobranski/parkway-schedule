@@ -69,7 +69,8 @@
   border-radius: 0px;
 }
 .winEvent {
-
+  background-color: rgb(148, 40, 255);
+  color: white;
 }
 .lunchEvent {
   background: none;
@@ -96,7 +97,11 @@
 
 }
 .duration {
+  border-top: solid 1px rgb(132, 255, 196);
+  padding-top: .25rem;
   font-size: 1rem;
+  color: rgb(253, 255, 129);
+
 }
 .eventContentWrapper {
   position: relative;
@@ -110,7 +115,7 @@
   text-align: center;
 }
 .eventTitle {
-
+  /* border: solid red 2px; */
 }
 .prepPeriod {
   position: absolute;
@@ -151,7 +156,10 @@
   }
   .prepPeriod {
     font-size: 1rem;
-    bottom: 0;
+    /* bottom: 0; */
     margin: 0;
+  }
+  .timeAndDurationWrapper {
+    position: relative;
   }
 }

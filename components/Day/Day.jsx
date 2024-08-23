@@ -21,7 +21,17 @@ export default function Day({ dayInfo, type, prep, lunch, scheduleType, setSched
       <div className={styles.selectScheduleTypeWrapper}>
         <div
           className={`${styles.scheduleOption} ${styles.yourScheduleOption} ${scheduleType === 'yourSchedule' ? styles.activeOption : ''}`}
-          onClick={() => handleScheduleTypeChange('yourSchedule')}
+          onClick={() => {
+            if (lunch && (type !== 'Staff' || (type === 'Staff' && prep.length))) {
+              handleScheduleTypeChange('yourSchedule');
+            } else {
+              if (type === 'Staff') {
+                alert('To view your personal schedule, please select your lunch and prep periods.');
+              } else if (type === 'Student') {
+                alert('To view your personal schedule, please select your lunch period.');
+              }
+            }
+          }}
         >
           YOUR SCHEDULE
         </div>
@@ -43,7 +53,7 @@ export default function Day({ dayInfo, type, prep, lunch, scheduleType, setSched
           }
 
           // Handle regular events or individual split schedules for 'yourSchedule'
-          if (event.type === 'split' && scheduleType === 'yourSchedule') {
+          if (event.type === 'split' && scheduleType === 'yourSchedule' && lunch) {
             const splitSchedule = event.splitSchedules[lunch];
             return splitSchedule.map((splitEvent, splitIndex) => (
               <div
@@ -59,7 +69,7 @@ export default function Day({ dayInfo, type, prep, lunch, scheduleType, setSched
                 <div className={styles.timeAndDurationWrapper}>
                   {splitEvent.type !== 'passing' && (
                     <p className={`${styles.startTime} ${styles.timeAndDuration}`}>
-                      {splitEvent.startTime}
+                      {`${splitEvent.startTime}-${splitEvent.endTime}`}
                     </p>
                   )}
                   <p className={`${styles.duration} ${styles.timeAndDuration}`}>
@@ -91,10 +101,10 @@ export default function Day({ dayInfo, type, prep, lunch, scheduleType, setSched
               <div className={styles.timeAndDurationWrapper}>
                 {event.type !== 'passing' && (
                   <p className={`${styles.startTime} ${styles.timeAndDuration}`}>
-                    {event.startTime}
-                  </p>
+                      {`${event.startTime}-${event.endTime}`}
+                      </p>
                 )}
-                <p className={`${styles.duration} ${styles.timeAndDuration}`}>
+                <p className={`${event.type === 'passing' ? styles.passingDuration : styles.duration} ${styles.timeAndDuration}`}>
                   {`${event.duration || 0} mins`}
                 </p>
               </div>

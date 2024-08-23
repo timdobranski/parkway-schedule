@@ -11,7 +11,7 @@ export default function Home() {
   const [prep, setPrep] = useState([]);
   const [lunch, setLunch] = useState(null);
 
-  const [scheduleType, setScheduleType] = useState('yourSchedule'); // yourSchedule or fullSchedule
+  const [scheduleType, setScheduleType] = useState('fullSchedule'); // yourSchedule or fullSchedule
 
 
   useEffect(() => {
@@ -24,16 +24,21 @@ export default function Home() {
     const storedType = localStorage.getItem('type');
     const storedPrep = localStorage.getItem('prep');
     const storedLunch = localStorage.getItem('lunch');
+    const storedScheduleType = localStorage.getItem('scheduleType');
 
     if (storedType) setType(storedType);
     if (storedPrep) setPrep(JSON.parse(storedPrep)); // localStorage stores arrays as strings
     if (storedLunch) setLunch(storedLunch);
+    if (storedScheduleType) setScheduleType(storedScheduleType);
   }, []);
 
   // Save `type` to localStorage whenever it changes
   useEffect(() => {
     if (type !== null) {
       localStorage.setItem('type', type);
+    }
+    if (type === 'Staff' && scheduleType === 'yourSchedule' && (prep.length === 0 || lunch === null)) {
+      setScheduleType('fullSchedule');
     }
   }, [type]);
 
@@ -51,6 +56,12 @@ export default function Home() {
     }
   }, [lunch]);
 
+  useEffect(() => {
+    if (scheduleType !== null) {
+      localStorage.setItem('scheduleType', scheduleType);
+    }
+  }, [scheduleType]);
+
   return (
     // <div className='app'>
     <>
@@ -62,7 +73,7 @@ export default function Home() {
           lunch={lunch}
           setLunch={setLunch}
           />
-        {type && lunch &&
+        {type &&
         <Schedule
           type={type}
           prep={prep}

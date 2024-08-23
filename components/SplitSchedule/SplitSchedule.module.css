@@ -85,10 +85,13 @@ margin: 0rem;
 font-size: 1rem;
 }
 .startTime {
-
+  margin-bottom: .25rem;
 }
 .duration {
 font-size: 1rem;
+color: rgb(253, 255, 129);
+border-top: solid 1px rgb(132, 255, 196);
+padding-top: .25rem;
 }
 .eventContentWrapper {
 position: relative;
@@ -106,6 +109,7 @@ text-align: center;
 }
 .eventTitle {
   margin: .25rem;
+  margin-bottom: .75rem;
   font-size: 1.25rem;
 }
 .prepPeriod {
@@ -117,7 +121,7 @@ font-size: 1rem;
 background: none;
 background-color: rgb(241, 76, 106);
 color: rgb(255, 255, 255);
-margin: 0;
+margin: 1rem 0;
 padding: .25rem .5rem;
 box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.7);
 }
