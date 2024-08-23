@@ -10,7 +10,7 @@
   border: solid white 2px;
   border-bottom: none;
   overflow-y: auto;
-  max-height: none;
+  max-height: 2000px;
 }
 .carouselSlide {
   position: relative;
@@ -21,5 +21,5 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  max-height: none;
+  max-height: 2000px;
 }

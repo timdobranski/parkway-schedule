@@ -3,6 +3,15 @@
 import styles from './SplitSchedule.module.css';
 
 export default function SplitSchedule({ splitSchedules, lunch, preps }) {
+
+  // Function to calculate height based on duration
+  const calculateHeight = (duration) => {
+    const baseHeight = 90; // 30 minutes = 100px
+    const height = (duration / 30) * baseHeight;
+    return `${height}px`;
+  };
+
+
   return (
     <div className={styles.splitWrapper}>
       {splitSchedules && Object.entries(splitSchedules).map(([key, splitSchedule], splitIndex) => (
@@ -25,6 +34,8 @@ export default function SplitSchedule({ splitSchedules, lunch, preps }) {
                     splitEvent.type === 'win' ? styles.winEvent :
                     splitEvent.type === 'passing' ? styles.passingEvent : ''}
                 `}
+                style={{ height: calculateHeight(splitEvent.duration || 0) }} // Apply dynamic height based on duration
+
               >
                 {/* Render prep span only if preps includes the event's period and lunch matches the current key */}
                 {preps.includes(Number(splitEvent.period)) && lunch === key && (
