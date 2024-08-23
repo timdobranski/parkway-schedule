@@ -23,3 +23,15 @@
   align-items: center;
   max-height: 2000px;
 }
+@media (max-width: 768px) {
+  .scheduleWrapper {
+    width: 100%;
+    padding: .25rem;
+    border: none;
+  }
+  .carouselSlide {
+    width: 100%;
+    /* border: solid red 2px; */
+    margin: 0;
+  }
+}

@@ -137,4 +137,10 @@
   .app {
     background-image: url(../public/photos/gradient3smallVertical.webp);
   }
+  .arrowLeft, .arrowRight, .arrowLeftDisabled, .arrowRightDisabled {
+    display: none;
+  }
+  .dayWrapper {
+    width: 95%;
+  }
 }

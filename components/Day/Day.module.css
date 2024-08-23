@@ -127,3 +127,31 @@
 .passingEvent .eventTitle {
   font-size: 1rem;
 }
+
+@media(max-width: 768px) {
+  .dailyScheduleWrapper {
+    padding: 0;
+  }
+  .daywrapper {
+    width: 95% !important;
+    max-width: none;
+  }
+  .eventWrapper {
+    width: 100%;
+    max-width: none;
+  }
+  .eventContentWrapper {
+    font-size: 1rem;
+  }
+  .eventTitle {
+    font-size: 1rem;
+  }
+  .timeAndDuration {
+    font-size: 1rem;
+  }
+  .prepPeriod {
+    font-size: 1rem;
+    bottom: 0;
+    margin: 0;
+  }
+}

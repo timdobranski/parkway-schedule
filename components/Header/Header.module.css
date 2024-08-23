@@ -88,5 +88,7 @@
     /* border: solid red 1px; */
     font-size: 1.25rem;
     box-sizing: border-box;
+    -webkit-text-stroke: 1px rgb(255, 255, 255);
+
   }
 }

@@ -99,8 +99,12 @@ const Form = ({ type, setType, prep, setPrep, lunch, setLunch }) => {
           onClick={() => setShowInput('lunch')}
           className={`${styles.statusIndicator} ${styles.lunchStatus} ${showInput === 'lunch' ? styles.active : ""} ${lunch ? "" : styles.empty}`}
         >
-          {lunch ? `Lunch: ${lunch}` : "Select Lunch"}
-        </div>
+{lunch ?
+          `${lunch === '7/8th Grade Lunch 1' ? '7/8th L1'
+          : lunch === '7/8th Grade Lunch 2' ? '7/8th L2'
+          : lunch === '6th Grade Lunch' ? '6th'
+          : lunch}`
+  : "Set Lunch"}        </div>
       </div>
 
       {/* Conditional Rendering of Fields */}
