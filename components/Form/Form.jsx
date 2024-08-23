@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import styles from "./Form.module.css"; // Assuming you have a CSS module
 
 const Form = () => {
@@ -14,6 +14,33 @@ const Form = () => {
 
   // Single state to control which input is currently visible
   const [showInput, setShowInput] = useState(null);
+
+  // Reference to track inputGroup element
+  const inputGroupRef = useRef(null);
+
+  // Handle click outside the input group
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (
+        inputGroupRef.current &&
+        !inputGroupRef.current.contains(event.target)
+      ) {
+        setShowInput(null); // Close the input if clicked outside
+      }
+    };
+
+    // Add event listener when any input is shown
+    if (showInput) {
+      document.addEventListener("mousedown", handleClickOutside);
+    } else {
+      document.removeEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      // Cleanup event listener on unmount or when showInput changes
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [showInput]);
 
   // Handlers for each field
 
@@ -56,12 +83,12 @@ const Form = () => {
       <div className={styles.statusWrapper}>
         <div
           onClick={() => setShowInput('type')}
-          className={`${styles.statusIndicator} ${styles.typeStatus} ${showInput === 'type' ? styles.active : ""} ${type ? "" : styles.empty}`}
+          className={`${styles.statusIndicator} ${styles.typeStatus} ${showInput === 'type' ? styles.active : ""} ${(type && showInput !== 'type') ? "" : styles.empty}`}
         >
-          {type ? type : "Staff or Student"}
+          {type ? type : "Start Here"}
         </div>
 
-        {type === "staff" && (
+        {type === "Staff" && (
           <div
             onClick={() => setShowInput('prep')}
             className={`${styles.statusIndicator} ${styles.prepStatus} ${showInput === 'prep' ? styles.active : ""} ${prep.length > 0 ? "" : styles.empty}`}
@@ -79,14 +106,14 @@ const Form = () => {
       </div>
 
       {/* Conditional Rendering of Fields */}
-
+      <div ref={inputGroupRef}>
       {showInput === 'type' && (
         <div className={`${styles.inputGroup} ${styles.typeInputGroup}`}>
           <label
             htmlFor="type"
             className={`${styles.sharedLabel} ${styles.typeLabel}`}
           >
-            Type (Staff or Students):
+            Staff Or Student?
           </label>
           <select
             id="type"
@@ -97,8 +124,8 @@ const Form = () => {
             className={`${styles.sharedInput} ${styles.typeInput}`}
           >
             <option value="">Select Type</option>
-            <option value="staff">Staff</option>
-            <option value="students">Students</option>
+            <option value="Staff">Staff</option>
+            <option value="Student">Student</option>
           </select>
         </div>
       )}
@@ -106,10 +133,10 @@ const Form = () => {
       {showInput === 'prep' && (
         <div className={`${styles.inputGroup} ${styles.prepInputGroup}`}>
           <label className={`${styles.sharedLabel} ${styles.prepLabel}`}>
-            Prep (Select multiple):
+            Set Your Prep Periods:
           </label>
           <div className={styles.prepOptions}>
-            {[1, 2, 3].map((prepNumber) => (
+            {[1, 2, 3, 4, 5, 6, 7].map((prepNumber) => (
               <label key={prepNumber} className={styles.prepOptionLabel}>
                 <input
                   type="checkbox"
@@ -119,7 +146,7 @@ const Form = () => {
                   onChange={handlePrepChange}
                   className={`${styles.sharedInput} ${styles.prepCheckbox}`}
                 />
-                Prep {prepNumber}
+                P{prepNumber}
               </label>
             ))}
           </div>
@@ -128,7 +155,7 @@ const Form = () => {
             onClick={handlePrepSubmit}
             className={styles.prepSubmitButton}
           >
-            Submit Prep Selection
+            Set
           </button>
         </div>
       )}
@@ -139,7 +166,7 @@ const Form = () => {
             htmlFor="lunch"
             className={`${styles.sharedLabel} ${styles.lunchLabel}`}
           >
-            Lunch (1, 2, or 3):
+            Set Your Lunch:
           </label>
           <select
             id="lunch"
@@ -149,13 +176,14 @@ const Form = () => {
             required
             className={`${styles.sharedInput} ${styles.lunchInput}`}
           >
-            <option value="">Select Lunch</option>
-            <option value={1}>1</option>
-            <option value={2}>2</option>
-            <option value={3}>3</option>
+            <option value="">Select an option</option>
+            <option value={`6th Grade`}>{`6th Grade`}</option>
+            <option value={`7/8th Grade Lunch 1`}>{`7/8th Grade Lunch 1`}</option>
+            <option value={`7/8th Grade Lunch 2`}>{`7/8th Grade Lunch 2`}</option>
           </select>
         </div>
       )}
+    </div>
     </div>
   );
 };
