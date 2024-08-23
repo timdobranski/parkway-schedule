@@ -37,7 +37,7 @@ export default function Schedule({ type, prep, lunch, scheduleType, setScheduleT
       preventMovementUntilSwipeScrollTolerance={true}
       swipeScrollTolerance={50}
       emulateTouch={true}
-      dynamicHeight={true}
+      dynamicHeight={false}
       autoPlay={false}
       showThumbs={false}
       showStatus={false}

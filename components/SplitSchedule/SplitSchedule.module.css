@@ -40,7 +40,7 @@
   color: black;
   border-radius: 0;
   margin: 0;
-  outline: solid 2px black;
+  outline: solid .125rem black;
 }
 .classEvent, .lunchEvent, .winEvent {
   height: 120px;
