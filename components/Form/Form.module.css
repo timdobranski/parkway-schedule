@@ -142,4 +142,9 @@
   .lunchStatus {
     width: 200px;
   }
+  .sharedInput {
+    font-size: 1.5rem;
+    padding: .25rem;
+    margin: .5rem;
+  }
 }
