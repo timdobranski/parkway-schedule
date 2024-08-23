@@ -83,7 +83,7 @@ const Form = ({ type, setType, prep, setPrep, lunch, setLunch }) => {
           onClick={() => setShowInput('type')}
           className={`${styles.statusIndicator} ${styles.typeStatus} ${showInput === 'type' ? styles.active : ""} ${(type && showInput !== 'type') ? "" : styles.empty}`}
         >
-          {type ? type : "Start Here"}
+          {type ? type : "VIEW THE SCHEDULE"}
         </div>
 
         {type === "Staff" && (
@@ -95,17 +95,19 @@ const Form = ({ type, setType, prep, setPrep, lunch, setLunch }) => {
           </div>
         )}
 
-        <div
+       {type &&
+       <div
           onClick={() => setShowInput('lunch')}
           className={`${styles.statusIndicator} ${styles.lunchStatus} ${showInput === 'lunch' ? styles.active : ""} ${lunch ? "" : styles.empty}`}
         >
-{lunch ?
+        {lunch ?
           `${lunch === '7/8th Grade Lunch 1' ? '7/8th L1'
           : lunch === '7/8th Grade Lunch 2' ? '7/8th L2'
           : lunch === '6th Grade Lunch' ? '6th'
           : lunch}`
-  : "Set Lunch"}        </div>
+  : "Set Lunch"}        </div>}
       </div>
+
 
       {/* Conditional Rendering of Fields */}
       <div ref={inputGroupRef}>
