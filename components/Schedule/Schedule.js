@@ -9,8 +9,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import Day from '../Day/Day';
 
-export default function Schedule() {
+export default function Schedule({ type, prep, lunch, scheduleType, setScheduleType }) {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [flattenedSchedule, setFlattenedSchedule] = useState([]);
 
   console.log('scheduleData', scheduleData);
   const handleCarouselChange = (index) => {
@@ -28,38 +29,40 @@ export default function Schedule() {
   }
 
   return (
-    <div className={styles.scheduleWrapper}>
-      Schedule Here
-
+    <div className='pageContentWrapper'>
+      <div className={styles.scheduleWrapper}>
       <Carousel
       renderArrowPrev={customPrevArrow}
       renderArrowNext={customNextArrow}
       preventMovementUntilSwipeScrollTolerance={true}
       swipeScrollTolerance={50}
       emulateTouch={true}
-      dynamicHeight={false}
+      dynamicHeight={true}
       autoPlay={false}
       showThumbs={false}
       showStatus={false}
       selectedItem={currentIndex}
       onChange={handleCarouselChange}
+      infiniteLoop={true}
+      renderIndicator={false}
     >
       {scheduleData?.map((day, index) => (
         <div key={index} className={styles.carouselSlide}>
-          {index === currentIndex || index === (currentIndex + 1) || index === (currentIndex - 1) ? (
+
             <Day
               dayInfo={day}
+              type={type}
+              prep={prep}
+              lunch={lunch}
+              scheduleType={scheduleType}
+              setScheduleType={setScheduleType}
             />
-          ) : (
-            <div className={styles.slide}>
-              <p>Day Schedule Goes Here</p>
-            </div>
-          )}
+
         </div>
       ))}
     </Carousel>
 
-
+      </div>
     </div>
   )
 }

@@ -1,0 +1,125 @@
+.splitWrapper {
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Creates 3 equal columns */
+  margin: 1rem 0;
+  padding-top: 1rem;
+  /* border-top: solid rgb(187, 187, 187) 4px; */
+  padding-bottom: 1rem;
+  /* border-bottom: solid white 4px; */
+  column-gap: .5rem;
+  box-sizing: border-box;
+}
+
+.scheduleColumn {
+  box-sizing: border-box;
+  /* position: relative; */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  /* padding: .25rem; */
+  /* border: solid yellow 2px; */
+}
+
+.eventWrapper {
+  /* border: solid red 2px; */
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  height: auto;
+  /* height: 100px; */
+  /* border: solid 1px black; */
+  padding: 0;
+  box-sizing: border-box;
+  background-color: rgb(255, 255, 255);
+  color: black;
+  border-radius: 0;
+  margin: .25rem 0;
+}
+.classEvent, .lunchEvent, .winEvent {
+  height: 120px;
+}
+.classEvent {
+background: linear-gradient(to right, #008ec7, #00578d);
+color: white;
+min-height: 80px;
+}
+.passingEvent {
+background-color: rgb(167, 255, 167);
+height: 6px;
+border-radius: 0px;
+padding: 0;
+min-height: none !important;
+
+font-size: .5rem;
+}
+.winEvent {
+
+}
+.lunchEvent {
+background: none;
+background-color: rgb(241, 76, 106);
+/* background: linear-gradient(to right,#e74f59, #ff6a76); */
+color: white;
+}
+.activeEvent {
+
+}
+
+.timeAndDurationWrapper {
+position: relative;
+display: flex;
+flex-direction: column;
+justify-content: flex-start;
+align-items: center;
+margin: 0 0rem 0 0rem;
+}
+.timeAndDuration {
+margin: 0rem;
+font-size: 1rem;
+}
+.startTime {
+
+}
+.duration {
+font-size: 1rem;
+}
+.eventContentWrapper {
+position: relative;
+font-size: 1.5rem;
+font-weight: 400;
+margin: 0;
+padding: 0;
+/* border: solid red 2px; */
+width: 100%;
+height: auto;
+/* height: 100%; */
+/* min-height: 80px; */
+flex-grow: 1;
+text-align: center;
+}
+.eventTitle {
+  margin: .25rem;
+  font-size: 1.25rem;
+}
+.prepPeriod {
+position: absolute;
+bottom: .5rem;
+left: 50%;
+transform: translateX(-50%);
+font-size: 1rem;
+background: none;
+background-color: rgb(241, 76, 106);
+color: rgb(255, 255, 255);
+margin: 0;
+padding: .25rem .5rem;
+box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.7);
+}
+.passingEvent .eventTitle {
+font-size: 1rem;
+}

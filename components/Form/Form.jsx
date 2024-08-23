@@ -3,11 +3,9 @@
 import { useState, useEffect, useRef } from "react";
 import styles from "./Form.module.css"; // Assuming you have a CSS module
 
-const Form = () => {
+const Form = ({ type, setType, prep, setPrep, lunch, setLunch }) => {
   // Separate states for each field
-  const [type, setType] = useState(null);
-  const [prep, setPrep] = useState([]);
-  const [lunch, setLunch] = useState(null);
+
 
   // Temp state for prep input before submission
   const [tempPrep, setTempPrep] = useState([]);
@@ -108,12 +106,13 @@ const Form = () => {
       {/* Conditional Rendering of Fields */}
       <div ref={inputGroupRef}>
       {showInput === 'type' && (
-        <div className={`${styles.inputGroup} ${styles.typeInputGroup}`}>
+        <div className={styles.modal} onClick={(e) => {setShowInput(null)}}>
+        <div className={`${styles.inputGroup} ${styles.typeInputGroup}`}  onClick={(e) => e.stopPropagation()}>
           <label
             htmlFor="type"
             className={`${styles.sharedLabel} ${styles.typeLabel}`}
           >
-            Staff Or Student?
+            SCHEDULE TYPE
           </label>
           <select
             id="type"
@@ -128,12 +127,15 @@ const Form = () => {
             <option value="Student">Student</option>
           </select>
         </div>
+        </div>
       )}
 
       {showInput === 'prep' && (
-        <div className={`${styles.inputGroup} ${styles.prepInputGroup}`}>
+                <div className={styles.modal} onClick={() => setShowInput(null)}>
+
+        <div className={`${styles.inputGroup} ${styles.prepInputGroup}`}  onClick={(e) => e.stopPropagation()}>
           <label className={`${styles.sharedLabel} ${styles.prepLabel}`}>
-            Set Your Prep Periods:
+            SET YOUR PREP PERIODS
           </label>
           <div className={styles.prepOptions}>
             {[1, 2, 3, 4, 5, 6, 7].map((prepNumber) => (
@@ -155,18 +157,21 @@ const Form = () => {
             onClick={handlePrepSubmit}
             className={styles.prepSubmitButton}
           >
-            Set
+            DONE
           </button>
+        </div>
         </div>
       )}
 
       {showInput === 'lunch' && (
-        <div className={`${styles.inputGroup} ${styles.lunchInputGroup}`}>
+                <div className={styles.modal} onClick={(e) => {setShowInput(null)}}>
+
+        <div className={`${styles.inputGroup} ${styles.lunchInputGroup}`}  onClick={(e) => e.stopPropagation()}>
           <label
             htmlFor="lunch"
             className={`${styles.sharedLabel} ${styles.lunchLabel}`}
           >
-            Set Your Lunch:
+            SET YOUR LUNCH
           </label>
           <select
             id="lunch"
@@ -181,6 +186,7 @@ const Form = () => {
             <option value={`7/8th Grade Lunch 1`}>{`7/8th Grade Lunch 1`}</option>
             <option value={`7/8th Grade Lunch 2`}>{`7/8th Grade Lunch 2`}</option>
           </select>
+        </div>
         </div>
       )}
     </div>

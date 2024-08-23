@@ -3,9 +3,44 @@
     flex-direction: column;
     width: 100%;
     height: 100%;
-    overflow-y: auto;
+    /* overflow-y: auto; */
     overflow-x: hidden;
     padding: 0 10px;
+}
+.dayHeader {
+  font-size: 2rem;
+  margin: .5rem 0 2rem 0;
+}
+.selectScheduleTypeWrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem 0;
+}
+.scheduleOption {
+  background-color: white;
+  color: black;
+  padding: .5rem 1rem;
+  margin: 0 1px;
+}
+.scheduleOption:hover {
+  cursor: pointer;
+}
+.yourScheduleOption {
+
+}
+.fullScheduleOption {
+
+}
+.activeOption {
+  background-color: rgb(0, 94, 128);
+  outline: solid 2px red;
+  color: white;
+  font-weight: bold;
+}
+.scheduleColumn {
+  border: solid yellow 4px;
 }
 
 .eventWrapper {
@@ -22,7 +57,7 @@
     box-sizing: border-box;
     background-color: rgb(255, 255, 255);
     color: black;
-    border-radius: 10px;
+    border-radius: 0
 }
 .classEvent {
   background: linear-gradient(to right, #008ec7, #00578d);
@@ -31,20 +66,23 @@
 .passingEvent {
   background-color: rgb(167, 255, 167);
   height: 25px;
-  border-radius: 8px;
+  border-radius: 0px;
 }
 .winEvent {
 
 }
 .lunchEvent {
-
+  background: none;
+  background-color: rgb(241, 76, 106);
+  /* background: linear-gradient(to right,#e74f59, #ff6a76); */
+  color: white;
 }
 .activeEvent {
 
 }
 
-
 .timeAndDurationWrapper {
+  position: absolute;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -61,6 +99,7 @@
   font-size: 1rem;
 }
 .eventContentWrapper {
+  position: relative;
   font-size: 1.5rem;
   font-weight: 400;
   margin: 0;
@@ -72,6 +111,18 @@
 }
 .eventTitle {
 
+}
+.prepPeriod {
+  position: absolute;
+  right: 0;
+  background: none;
+  background-color: rgb(241, 76, 106);
+  color: rgb(255, 255, 255);
+  margin: 0 1rem;
+  padding: .25rem .5rem;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.7);
+  /* background-color: rgb(136, 227, 255);
+  color: white; */
 }
 .passingEvent .eventTitle {
   font-size: 1rem;

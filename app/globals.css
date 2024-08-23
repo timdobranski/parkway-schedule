@@ -20,38 +20,90 @@
   font-weight: bold; /* or 700 */
 }
 
+/* WEBKIT SCROLLBAR */
+
+/* The entire scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+/* The track (progress bar) of the scrollbar */
+::-webkit-scrollbar-track {
+  background: #ffffff;
+  background: rgba(0, 0, 0, 0);
+
+}
+/* The handle (thumb) of the scrollbar */
+::-webkit-scrollbar-thumb {
+  background: rgb(255, 83, 83);
+  padding-right: 2px;
+
+}
+/* The handle (thumb) when hovering over it */
+::-webkit-scrollbar-thumb:hover {
+  background: #006a90;
+}
+/* FIREFOX ONLY */
+@-moz-document url-prefix() {
+  body {
+    scrollbar-width: thin;
+    scrollbar-color: rgb(255, 83, 83) rgba(0, 0, 0, 0);
+  }
+  .custom-scrollbar-element {
+    scrollbar-width: thin;
+    scrollbar-color: rgb(255, 83, 83) rgba(0, 0, 0, .5);
+  }
+}
+
 .body {
   margin: 0;
 }
 
 .app {
+  position: absolute;
+  top: 0;
+  left: 0;
   /* background: linear-gradient(to bottom, #37c6ff, #0092ec); */
   background-image: url(../public/photos/gradient3small.webp);
   background-size: cover;
   background-repeat: no-repeat;
-  /* background: linear-gradient(to bottom, #53afe9, #fafafa); */
   font-family: Louis George Cafe;
   text-align: center;
-  letter-spacing: 0;
-  overflow: hidden;
   /* border: solid red 4px; */
   box-sizing: border-box;
   margin: 0;
   height: 100vh;
-  width: 100vw;
+  /* overflow-y: auto; */
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  padding-top: 80px;
+  /* padding-bottom: 4rem; */
+  /* border: solid red 2px; */
 }
+.pageContentWrapper {
+    /* border: solid green 2px; */
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    /* padding-bottom: 2rem; */
+    /* border-top: solid white 2px; */
+}
+
+
+
 /* --------------ARROW BUTTONS---------------- */
 
 .arrowLeft, .arrowRight, .arrowLeftDisabled, .arrowRightDisabled {
   height: 30px;
   width: 30px;
   position: absolute;
-  top: calc(50% - 15px);
+  top: 100px;
   /* transform: translate(0, -50%); */
   /* transition: transform 0.5s ease; */
   border-radius: 50%;
