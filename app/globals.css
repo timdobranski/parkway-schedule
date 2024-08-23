@@ -1,0 +1,38 @@
+@font-face {
+  font-family: 'Future';
+  src: url('../public/fonts/FUTRFW.TTF');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.body {
+  margin: 0;
+}
+
+.app {
+  /* background: linear-gradient(to bottom, #37c6ff, #0092ec); */
+  background-image: url(../public/photos/gradient3small.webp);
+  background-size: cover;
+  background-repeat: no-repeat;
+  /* background: linear-gradient(to bottom, #53afe9, #fafafa); */
+  font-family: Future;
+  text-align: center;
+  letter-spacing: 0;
+  overflow: hidden;
+  /* border: solid red 4px; */
+  box-sizing: border-box;
+  margin: 0;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+
+}
+
+@media(max-width: 768px) {
+  .app {
+    background-image: url(../public/photos/gradient3smallVertical.webp);
+  }
+}
