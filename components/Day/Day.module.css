@@ -78,7 +78,7 @@
     /* height: 100px; */
     /* border: solid 1px black; */
     margin: .25rem 0;
-    padding: 10px;
+    padding: 10px 4px 0px 4px;
     box-sizing: border-box;
     background-color: rgb(255, 255, 255);
     color: black;
@@ -118,16 +118,21 @@
   justify-content: flex-start;
   align-items: center;
   margin: 0 0rem 0 0rem;
+  top: 4px;
+  left: 4px;
+}
+.passingEvent .timeAndDurationWrapper {
+top: 0;
 }
 .timeAndDuration {
   margin: .25rem;
 }
 .startTime {
-
+  margin-bottom: 0px;
 }
 .duration {
   border-top: solid 1px rgb(132, 255, 196);
-  padding-top: .25rem;
+  padding-top: 4px;
   font-size: 1rem;
   color: rgb(253, 255, 129);
 
@@ -230,11 +235,9 @@
 }
 .todoListWrapper {
   position: relative;
-  right: 0;
   /* background-color: rgba(0, 0, 0, .5); */
-  width: calc(100% - 7rem);
-  padding: .5rem 1.5rem;
-  margin-left: 7rem;
+  width: 100%;
+  padding: .5rem;
 }
 
 
@@ -252,7 +255,7 @@
   }
   .eventWrapper {
     width: 100%;
-    padding: 5px;
+    padding: 5px 0px 0px 0px;
     max-width: none;
     display: flex;
     /* flex-direction: column; */
@@ -270,9 +273,10 @@
   }
   .timeAndDurationWrapper {
     position: absolute;
-    left: 0;
-    top: 0;
-    width: 100px;
+    left: 2px;
+    top: 0px;
+    width: fit-content;
+    /* border: solid red 2px; */
   }
 
   .passingEvent .timeAndDurationWrapper {
@@ -293,7 +297,7 @@
   }
   .prepPeriod {
     font-size: 1rem;
-    right: -3.5rem;
+    right: -4rem;
     /* right: unset; */
     /* bottom: 0; */
     margin: 0;
@@ -301,8 +305,12 @@
   .passingEvent .timeAndDurationWrapper, .passingEvent .duration {
     left: 0;
     margin-left: 0;
-    width: 80px !important;
+    /* width: 80px !important; */
 
+  }
+  .passingEvent {
+    top: 0;
+    padding: 0;
   }
   .todoListWrapper {
     margin-left: 0;
