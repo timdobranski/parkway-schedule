@@ -377,7 +377,8 @@ const scheduleData = [
   },
   // testing thursday
   {
-    day: "Testing: Thurs, 8/22 & 29",
+    specialDay: true,
+    day: "Testing: Thurs, 8/29",
     schedule: [
       {
         title: "Period 1",
@@ -430,7 +431,8 @@ const scheduleData = [
   },
  // testing friday
  {
-  day: "Testing: Fri, 8/23 & 30",
+  specialDay: true,
+  day: "Testing: Fri, 8/30",
   schedule: [
     {
       title: "Period 4",

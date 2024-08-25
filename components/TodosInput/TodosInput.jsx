@@ -2,10 +2,11 @@
 
 import styles from './TodosInput.module.css';
 import { useState, useEffect } from 'react';
+import dayHasEvent from '../../utils/dayHasEvent';
 
-export default function TodosInput({ todos, day, event, setTodosFormOpen, setTodos, todoEditId, setTodoEditId }) {
+export default function TodosInput({ todos, day, event, setTodosFormOpen, setTodos, todoEditId, setTodoEditId, scheduleData }) {
   const [description, setDescription] = useState('');
-  const [frequency, setFrequency] = useState('dayOnly');
+  const [frequency, setFrequency] = useState([]);
 
   useEffect(() => {
     if (todoEditId) {
@@ -42,11 +43,23 @@ export default function TodosInput({ todos, day, event, setTodosFormOpen, setTod
     setTodoEditId(null);
   }
 
+  const handleDayChange = (day) => {
+    setFrequency((prevFrequency) =>
+      prevFrequency.includes(day)
+        ? prevFrequency.filter(d => d !== day) // Uncheck: remove from frequency
+        : [...prevFrequency, day] // Check: add to frequency
+    );
+  };
+
+  useEffect(() => {
+    console.log('event changed in TodosInput component: ', event);
+  }, [event])
+
   return (
     <div className={styles.modalWrapper} onClick={closeForm}>
       <div className={styles.contentWrapper} onClick={e => e.stopPropagation()}>
         <h1 className={styles.modalTitle}>
-          {todoEditId ? 'EDIT TO-DO' : 'ADD A TO-DO'} FOR THIS BLOCK:
+          {todoEditId ? 'EDIT TO-DO' : 'ADD A TO-DO'} FOR {event.toUpperCase()}:
         </h1>
 
         <div className={styles.formSection}>
@@ -62,19 +75,25 @@ export default function TodosInput({ todos, day, event, setTodosFormOpen, setTod
           />
         </div>
 
-        {/* Frequency Select */}
-        <div className={styles.formSection}>
-          <label htmlFor="frequency" className={styles.inputLabel}>Frequency:</label>
-          <select
-            id="frequency"
-            name="frequency"
-            className={styles.frequencySelect}
-            value={frequency}
-            onChange={e => setFrequency(e.target.value)}
-          >
-            <option value="dayOnly">{`${event} ${day}s only`}</option>
-            <option value="every">{event} every day</option>
-          </select>
+          {/* Frequency Checkboxes */}
+          <div className={styles.formSection}>
+          <label htmlFor="frequency" className={styles.frequencyInputLabel}>{`SELECT DAYS`}</label>
+          <div className={styles.checkboxGroup}>
+            {scheduleData.map((dayInfo, index) => {
+              if (dayHasEvent(dayInfo.day, event)) return (
+
+                <label key={index} className={`${styles.checkboxLabel} ${dayInfo.specialDay ? styles.specialDay : ''}`}>
+                <input
+                  type="checkbox"
+                  value={dayInfo.day}
+                  checked={frequency.includes(dayInfo.day)}
+                  onChange={() => handleDayChange(dayInfo.day)}
+                  />
+                {dayInfo.day}
+              </label>
+                )
+})}
+          </div>
         </div>
 
         <button className={styles.submitButton} onClick={handleSubmit}>

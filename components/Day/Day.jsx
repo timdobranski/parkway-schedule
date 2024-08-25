@@ -34,7 +34,7 @@ export default function Day({
               handleScheduleTypeChange('yourSchedule');
             } else {
               if (type === 'Staff') {
-                alert('To view your personal schedule, please select your lunch and prep periods');
+                alert('To view your personal schedule, please select your lunch and prep periods (if any) at the top first');
               } else if (type === 'Student') {
                 alert('To view your personal schedule, please select your lunch period.');
               }
@@ -81,7 +81,7 @@ export default function Day({
                   onClick={() => {
                     setTodosFormOpen(true);
                     setSelectedDay(dayInfo.day);
-                    setSelectedEvent(event.title);
+                    setSelectedEvent(splitEvent.title);
                     }}
                 />}
                 <div className={styles.timeAndDurationWrapper}>
@@ -99,26 +99,26 @@ export default function Day({
                     {splitEvent.title}
                     {prep.includes(Number(splitEvent.period)) && <span className={styles.prepPeriod}>{`PREP`}</span>}
                   </p>
-                  {scheduleType === 'yourSchedule' && event.type !== 'passing' && (
-                  (() => {
-                    // Filter todos that meet the conditions
-                    const filteredTodos = todos.filter(todo => {
-                      const isEvery = todo.frequency === 'every';
-                      const isDayOnly = todo.frequency === 'dayOnly' && dayInfo.day === todo.day;
-                      const isMatchingEvent = event.title === todo.event;
+                  {scheduleType === 'yourSchedule' && splitEvent.type !== 'passing' && (
+              (() => {
+                // Filter todos that meet the conditions
+                const filteredTodos = todos.filter(todo => {
+                  const isEvery = todo.frequency.includes('every'); // Check if 'every' is in the frequency array
+                  const isDayIncluded = todo.frequency.includes(dayInfo.day); // Check if current day is in the frequency array
+                  const isMatchingEvent = splitEvent.title === todo.event; // Check if event matches
 
-                      return (isEvery && isMatchingEvent) || (isDayOnly && isMatchingEvent);
-                    });
+                  return (isEvery && isMatchingEvent) || (isDayIncluded && isMatchingEvent);
+                });
 
-                    // Only render the <ul> if there are matching todos
-                    return filteredTodos.length > 0 ? (
-                      <ul className={styles.todoListWrapper}>
-                        {filteredTodos.map((todo, index) => (
-                          <Todo key={index} todoData={todo} setTodos={setTodos} setTodosFormOpen={setTodosFormOpen} setTodoEditId={setTodoEditId} />
-                        ))}
-                      </ul>
-                    ) : null;
-                  })()
+                // Only render the <ul> if there are matching todos
+                return filteredTodos.length > 0 ? (
+                  <ul className={styles.todoListWrapper}>
+                    {filteredTodos.map((todo, index) => (
+                      <Todo key={index} todoData={todo} setTodos={setTodos} setTodosFormOpen={setTodosFormOpen} setTodoEditId={setTodoEditId} />
+                    ))}
+                  </ul>
+                ) : null;
+              })()
 )}
                 </div>
               </div>
@@ -168,18 +168,18 @@ export default function Day({
                   (() => {
                     // Filter todos that meet the conditions
                     const filteredTodos = todos.filter(todo => {
-                      const isEvery = todo.frequency === 'every';
-                      const isDayOnly = todo.frequency === 'dayOnly' && dayInfo.day === todo.day;
-                      const isMatchingEvent = event.title === todo.event;
+                      const isEvery = todo.frequency.includes('every'); // Check if 'every' is in the frequency array
+                      const isDayIncluded = todo.frequency.includes(dayInfo.day); // Check if current day is in the frequency array
+                      const isMatchingEvent = event.title === todo.event; // Check if event matches
 
-                      return (isEvery && isMatchingEvent)  || (isDayOnly && isMatchingEvent );
+                      return (isEvery && isMatchingEvent) || (isDayIncluded && isMatchingEvent);
                     });
 
                     // Only render the <ul> if there are matching todos
                     return filteredTodos.length > 0 ? (
                       <ul className={styles.todoListWrapper}>
                         {filteredTodos.map((todo, index) => (
-                          <Todo key={index} todoData={todo} setTodos={setTodos} setTodoEditId={setTodoEditId} setTodosFormOpen={setTodosFormOpen} />
+                          <Todo key={index} todoData={todo} setTodos={setTodos} setTodosFormOpen={setTodosFormOpen} setTodoEditId={setTodoEditId} />
                         ))}
                       </ul>
                     ) : null;

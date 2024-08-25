@@ -9,7 +9,7 @@ export default function Header() {
   return (
     <div className={styles.logoWrapper}>
       <img src='/photos//parkway.webp'  className={styles.shield} alt="Parkway Logo" onClick={() => router.push('/')}/>
-      <h1 className={styles.title}>PARKWAY SCHEDULE</h1>
+      <h1 className={styles.title}>SCHEDULE</h1>
     </div>
   )
 }

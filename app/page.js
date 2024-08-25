@@ -6,6 +6,7 @@ import Form from "../components/Form/Form";
 import Schedule from "../components/Schedule/Schedule";
 import { useState, useEffect } from "react";
 import TodosInput from "../components/TodosInput/TodosInput";
+import scheduleData from "../public/scheduleData";
 
 export default function Home() {
   const [type, setType] = useState(null);
@@ -90,6 +91,11 @@ export default function Home() {
     if (lunch !== null) {
       localStorage.setItem('lunch', lunch);
     }
+    console.log('lunch changed', lunch);
+    if (!lunch && scheduleType === 'yourSchedule') {
+      console.log('condition met to set schedule to full')
+      setScheduleType('fullSchedule');
+    }
   }, [lunch]);
 
   // useEffect(() => {
@@ -145,6 +151,7 @@ export default function Home() {
             todoEditId={todoEditId}
             setTodoEditId={setTodoEditId}
             setTodosFormOpen={setTodosFormOpen}
+            scheduleData={scheduleData}
           />
         )}
           </>

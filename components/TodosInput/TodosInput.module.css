@@ -15,7 +15,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
   width: 80%;
-  max-width: 500px;
+  max-width: 600px;
   height: 600px;
   background: linear-gradient(to left, rgb(0, 129, 181) 0%, rgb(0, 78, 109) 100%);
   border-radius: 4px;
@@ -42,11 +42,35 @@
   justify-content: flex-start;
   align-items: center;
 }
-.inputLabel {
-  width: 25%;
+.checkboxGroup {
+  /* border: solid white 2px; */
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
+}
+.checkboxLabel {
   color: white;
-  margin: .5rem;
   font-size: 1.25rem;
+  margin: .5rem;
+  text-align: left;
+}
+.specialDay {
+  color: rgb(255, 86, 86);
+  background: rgba(0, 0, 0, .5);
+  padding: .25rem .5rem .25rem 0;
+  margin-top: 0;
+  font-weight: bold;
+  width: fit-content;
+}
+.inputLabel, .frequencyInputLabel {
+  width: 50%;
+  color: white;
+  margin: .5rem 0 1.5rem 0;
+  font-size: 1.25rem;
+}
+.frequencyInputLabel {
+  text-decoration: underline;
+  text-decoration-color: red;
 }
 .descriptionInput, .frequencySelect {
   font-size: 1rem;
@@ -67,7 +91,7 @@
   padding: .5rem;
   margin: 3rem 0 1rem 0;
   /* background-color: white; */
-  background: rgb(250, 52, 95);
+  background: rgb(255, 76, 97);
   color: white;
   font-size: 1.25rem;
   border: none;

@@ -40,6 +40,12 @@ const Form = ({ type, setType, prep, setPrep, lunch, setLunch }) => {
     };
   }, [showInput]);
 
+  useEffect(() => {
+    if (prep && prep.length > 0) {
+      setTempPrep(prep);
+    }
+  }, [prep]);
+
   // Handlers for each field
 
   const handleTypeChange = (e) => {
@@ -76,6 +82,7 @@ const Form = ({ type, setType, prep, setPrep, lunch, setLunch }) => {
   };
 
   return (
+    <>
     <div className={styles.formWrapper}>
       {/* Status Indicators */}
       <div className={styles.statusWrapper}>
@@ -91,7 +98,7 @@ const Form = ({ type, setType, prep, setPrep, lunch, setLunch }) => {
             </>
 
           )
-           : "VIEW THE SCHEDULE"}
+           : "SELECT SCHEDULE TYPE"}
         </div>
 
         {type === "Staff" && (
@@ -240,7 +247,10 @@ const Form = ({ type, setType, prep, setPrep, lunch, setLunch }) => {
         </div>
       )}
     </div>
+
     </div>
+    {!type && <p className={styles.directions}>{`To get started, select student or staff schedules. The only difference is that staff can set their prep periods, if any.`}</p>}
+      </>
   );
 };
 
