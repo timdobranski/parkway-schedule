@@ -83,7 +83,15 @@ const Form = ({ type, setType, prep, setPrep, lunch, setLunch }) => {
           onClick={() => setShowInput('type')}
           className={`${styles.statusIndicator} ${styles.typeStatus} ${showInput === 'type' ? styles.active : ""} ${(type && showInput !== 'type') ? "" : styles.empty}`}
         >
-          {type ? type : "VIEW THE SCHEDULE"}
+          {type ?
+          (
+            <>
+            Type: <br/>
+            {type}
+            </>
+
+          )
+           : "VIEW THE SCHEDULE"}
         </div>
 
         {type === "Staff" && (
@@ -91,7 +99,25 @@ const Form = ({ type, setType, prep, setPrep, lunch, setLunch }) => {
             onClick={() => setShowInput('prep')}
             className={`${styles.statusIndicator} ${styles.prepStatus} ${showInput === 'prep' ? styles.active : ""} ${prep.length > 0 ? "" : styles.empty}`}
           >
-            {prep.length > 0 ? `Prep: ${prep.join(", ")}` : "Set Prep"}
+            {prep.length > 0 ?
+            (
+              <>
+              Prep:
+              <br/>
+              {prep.join(", ")}
+
+              </>
+            )
+
+
+            : (
+              <>
+            Set <br />
+            Prep
+              </>
+            )
+
+            }
           </div>
         )}
 
@@ -100,13 +126,31 @@ const Form = ({ type, setType, prep, setPrep, lunch, setLunch }) => {
           onClick={() => setShowInput('lunch')}
           className={`${styles.statusIndicator} ${styles.lunchStatus} ${showInput === 'lunch' ? styles.active : ""} ${lunch ? "" : styles.empty}`}
         >
-        {lunch ?
-          `${lunch === '7/8th Grade Lunch 1' ? '7/8th L1'
-          : lunch === '7/8th Grade Lunch 2' ? '7/8th L2'
-          : lunch === '6th Grade Lunch' ? '6th'
-          : lunch}`
-  : "Set Lunch"}        </div>}
-      </div>
+        {
+          lunch ? (
+            lunch === '7/8th Grade Lunch 1' ? (
+              <>
+                Lunch:<br />7/8th (1st)
+              </>
+            ) : lunch === '7/8th Grade Lunch 2' ? (
+              <>
+                Lunch:<br />7/8th (2nd)
+              </>
+            ) : lunch === '6th Grade' ? (
+              <>
+                Lunch:<br/>6th Grade
+              </>
+            ) : (
+              lunch
+            )
+          ) : (
+            <>
+              Set <br />Lunch
+            </>
+          )
+        }
+        </div>}
+        </div>
 
 
       {/* Conditional Rendering of Fields */}

@@ -13,18 +13,35 @@
   justify-content: center;
 }
 .statusIndicator {
+  box-sizing: border-box;
   margin: 1rem;
   background-color: white;
-  padding: .5rem 1rem;
+  padding: .5rem .25rem;
   border-radius: 4px;
   width: 200px;
+
 }
 .statusIndicator:hover {
   cursor: pointer;
 }
+.typeStatus {
+
+}
+.prepStatus {
+
+}
+.lunchStatus {
+
+}
+.statusIndicator:not(.empty) {
+  background-color: rgb(0, 129, 181);
+  color: white;
+  border: solid white 1px;
+}
 .empty {
   background-color: rgb(253, 98, 98);
   color: rgb(255, 255, 255);
+  border: solid white 1px;
 }
 .active {
   background-color: rgb(0, 94, 128);
@@ -106,13 +123,14 @@
   .statusWrapper {
     width: 100vw;
     margin: .5rem 0;
+    justify-content: space-around;
+    align-items: space-around;
   }
   .statusIndicator {
-    min-width: 0px;
-    max-width: 500px;
-    width: 200px !important;
-    margin: .2rem;
-    /* border: solid red 2px; */
+    min-width: none;
+    max-width: none;
+    width: 30vw !important;
+    margin: .5rem 0;
   }
   .inputGroup {
     box-sizing:border-box;
@@ -147,4 +165,15 @@
     padding: .25rem;
     margin: .5rem;
   }
+}
+@media(max-width: 375px) {
+
+  .prepOptions {
+    margin: .5rem;
+
+  }
+  .prepOptionLabel {
+    margin: .5rem 0rem;
+  }
+
 }
