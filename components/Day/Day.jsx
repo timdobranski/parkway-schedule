@@ -42,11 +42,6 @@ export default function Day({
         >
           YOUR SCHEDULE
 
-          <div className={styles.todosNotification}>
-            <p>NEW! </p>
-            <p>Add to-dos to</p>
-            <p>your schedule</p>
-            </div>
         </div>
         <div
           className={`${styles.scheduleOption} ${styles.fullScheduleOption} ${scheduleType === 'fullSchedule' ? styles.activeOption : ''}`}
@@ -79,7 +74,7 @@ export default function Day({
                     splitEvent.type === 'passing' ? styles.passingEvent : ''}
                 `}
               >
-                <FontAwesomeIcon
+                {splitEvent.type !== 'passing' && <FontAwesomeIcon
                   icon={faPlus}
                   className={styles.addTodoIcon}
                   onClick={() => {
@@ -87,7 +82,7 @@ export default function Day({
                     setSelectedDay(dayInfo.day);
                     setSelectedEvent(event.title);
                     }}
-                />
+                />}
                 <div className={styles.timeAndDurationWrapper}>
                   {splitEvent.type !== 'passing' && (
                     <p className={`${styles.startTime} ${styles.timeAndDuration}`}>
@@ -141,7 +136,7 @@ export default function Day({
                   event.type === 'passing' ? styles.passingEvent : ''}
               `}
             >
-                <FontAwesomeIcon
+                {event.type !== 'passing' &&<FontAwesomeIcon
                   icon={faPlus}
                   className={styles.addTodoIcon}
                   onClick={() => {
@@ -150,6 +145,7 @@ export default function Day({
                     setSelectedDay(dayInfo.day);
                     setSelectedEvent(event.title);
                     }}/>
+                  }
               <div className={styles.timeAndDurationWrapper}>
                 {event.type !== 'passing' && (
                   <p className={`${styles.startTime} ${styles.timeAndDuration}`}>

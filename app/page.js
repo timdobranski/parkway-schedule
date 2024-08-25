@@ -17,8 +17,14 @@ export default function Home() {
   const [selectedEvent, setSelectedEvent] = useState('');
 
   const [todos, setTodos] = useState([]);
-  const [scheduleType, setScheduleType] = useState('fullSchedule');
-
+  const [scheduleType, setScheduleType] = useState(() => {
+    if (typeof window !== 'undefined') {
+      const savedScheduleType = localStorage.getItem('scheduleType');
+      return savedScheduleType ? savedScheduleType : 'fullSchedule';
+    } else {
+      return 'fullSchedule'; // Fallback for SSR
+    }
+  });
   // Using useEffect to check if we're in the client before accessing localStorage
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -30,6 +36,8 @@ export default function Home() {
       const savedScheduleType = localStorage.getItem('scheduleType');
       if (savedScheduleType) {
         setScheduleType(savedScheduleType);
+      } else {
+        setScheduleType('fullSchedule');
       }
     }
   }, []); // Empty dependency array ensures this runs once on mount
@@ -39,6 +47,7 @@ export default function Home() {
       localStorage.setItem('todos', JSON.stringify(todos));
     }
   }, [todos]);
+
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -82,11 +91,11 @@ export default function Home() {
     }
   }, [lunch]);
 
-  useEffect(() => {
-    if (scheduleType !== null) {
-      localStorage.setItem('scheduleType', scheduleType);
-    }
-  }, [scheduleType]);
+  // useEffect(() => {
+  //   if (scheduleType !== null) {
+  //     localStorage.setItem('scheduleType', scheduleType);
+  //   }
+  // }, [scheduleType]);
 
 
   useEffect(() => {
