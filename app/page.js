@@ -16,17 +16,35 @@ export default function Home() {
   const [selectedDay, setSelectedDay] = useState('');
   const [selectedEvent, setSelectedEvent] = useState('');
 
-  const [todos, setTodos] = useState(() => {
-    const savedTodos = localStorage.getItem('todos');
-    return savedTodos ? JSON.parse(savedTodos) : []; // If there are saved todos, use them; otherwise, start with an empty array
-  });
+  const [todos, setTodos] = useState([]);
+  const [scheduleType, setScheduleType] = useState('fullSchedule');
 
-  const [scheduleType, setScheduleType] = useState('fullSchedule'); // yourSchedule or fullSchedule
+  // Using useEffect to check if we're in the client before accessing localStorage
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const savedTodos = localStorage.getItem('todos');
+      if (savedTodos) {
+        setTodos(JSON.parse(savedTodos));
+      }
 
+      const savedScheduleType = localStorage.getItem('scheduleType');
+      if (savedScheduleType) {
+        setScheduleType(savedScheduleType);
+      }
+    }
+  }, []); // Empty dependency array ensures this runs once on mount
 
   useEffect(() => {
-    console.log("prep changed on page: ", prep);
-  }, [prep]);
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('todos', JSON.stringify(todos));
+    }
+  }, [todos]);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('scheduleType', scheduleType);
+    }
+  }, [scheduleType]);
 
 
   // Load initial values from localStorage when the component mounts
