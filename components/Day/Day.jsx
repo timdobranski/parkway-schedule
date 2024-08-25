@@ -3,16 +3,30 @@
 import styles from './Day.module.css'
 import { useState, useEffect } from 'react'
 import SplitSchedule from '../SplitSchedule/SplitSchedule'
+import TodosInput from '../TodosInput/TodosInput'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPlus } from '@fortawesome/free-solid-svg-icons'
+import Todo from '../Todo/Todo'
 
-export default function Day({ dayInfo, type, prep, lunch, scheduleType, setScheduleType }) {
+export default function Day({ dayInfo, type, prep, lunch, scheduleType, setScheduleType, todosFormOpen, setTodosFormOpen, selectedDay, setSelectedDay, selectedEvent, setSelectedEvent }) {
+  const [todos, setTodos] = useState([]);
 
   useEffect(() => {
-    console.log('dayInfo changed: ', dayInfo);
-  }, [dayInfo]);
+    const savedTodos = localStorage.getItem('todos');
+    if (savedTodos) {
+      setTodos(JSON.parse(savedTodos)); // Parse the stored JSON string and set it as the todos state
+    }
+  }, []);
+
+  useEffect(() => {
+    console.log('todos changed: ', todos);
+  }, [todos]);
 
   const handleScheduleTypeChange = (type) => {
     setScheduleType(type);
   };
+
+
 
   return (
     <div className="dayWrapper">
@@ -34,6 +48,12 @@ export default function Day({ dayInfo, type, prep, lunch, scheduleType, setSched
           }}
         >
           YOUR SCHEDULE
+
+          <div className={styles.todosNotification}>
+            <p>NEW! </p>
+            <p>Add to-dos to</p>
+            <p>your schedule</p>
+            </div>
         </div>
         <div
           className={`${styles.scheduleOption} ${styles.fullScheduleOption} ${scheduleType === 'fullSchedule' ? styles.activeOption : ''}`}
@@ -66,6 +86,15 @@ export default function Day({ dayInfo, type, prep, lunch, scheduleType, setSched
                     splitEvent.type === 'passing' ? styles.passingEvent : ''}
                 `}
               >
+                <FontAwesomeIcon
+                  icon={faPlus}
+                  className={styles.addTodoIcon}
+                  onClick={() => {
+                    setTodosFormOpen(true);
+                    setSelectedDay(dayInfo.day);
+                    setSelectedEvent(event.title);
+                    }}
+                />
                 <div className={styles.timeAndDurationWrapper}>
                   {splitEvent.type !== 'passing' && (
                     <p className={`${styles.startTime} ${styles.timeAndDuration}`}>
@@ -81,6 +110,27 @@ export default function Day({ dayInfo, type, prep, lunch, scheduleType, setSched
                     {splitEvent.title}
                     {prep.includes(Number(splitEvent.period)) && <span className={styles.prepPeriod}>{`PREP`}</span>}
                   </p>
+                  {scheduleType === 'yourSchedule' && event.type !== 'passing' && (
+                  (() => {
+                    // Filter todos that meet the conditions
+                    const filteredTodos = todos.filter(todo => {
+                      const isEvery = todo.frequency === 'every';
+                      const isDayOnly = todo.frequency === 'dayOnly' && dayInfo.day === todo.day;
+                      const isMatchingEvent = event.title === todo.event;
+
+                      return (isEvery && isMatchingEvent) || (isDayOnly && isMatchingEvent);
+                    });
+
+                    // Only render the <ul> if there are matching todos
+                    return filteredTodos.length > 0 ? (
+                      <ul className={styles.todoListWrapper}>
+                        {filteredTodos.map((todo, index) => (
+                          <Todo key={index} todoData={todo} />
+                        ))}
+                      </ul>
+                    ) : null;
+                  })()
+)}
                 </div>
               </div>
             ));
@@ -98,6 +148,15 @@ export default function Day({ dayInfo, type, prep, lunch, scheduleType, setSched
                   event.type === 'passing' ? styles.passingEvent : ''}
               `}
             >
+                <FontAwesomeIcon
+                  icon={faPlus}
+                  className={styles.addTodoIcon}
+                  onClick={() => {
+                    console.log('clicked!');
+                    setTodosFormOpen(true);
+                    setSelectedDay(dayInfo.day);
+                    setSelectedEvent(event.title);
+                    }}/>
               <div className={styles.timeAndDurationWrapper}>
                 {event.type !== 'passing' && (
                   <p className={`${styles.startTime} ${styles.timeAndDuration}`}>
@@ -113,6 +172,29 @@ export default function Day({ dayInfo, type, prep, lunch, scheduleType, setSched
                   {event.title}
                   {prep.includes(Number(event.period)) && <span className={styles.prepPeriod}>{`PREP`}</span>}
                 </p>
+
+
+                {scheduleType === 'yourSchedule' && event.type !== 'passing' && (
+                  (() => {
+                    // Filter todos that meet the conditions
+                    const filteredTodos = todos.filter(todo => {
+                      const isEvery = todo.frequency === 'every';
+                      const isDayOnly = todo.frequency === 'dayOnly' && dayInfo.day === todo.day;
+                      const isMatchingEvent = event.title === todo.event;
+
+                      return (isEvery && isMatchingEvent)  || (isDayOnly && isMatchingEvent );
+                    });
+
+                    // Only render the <ul> if there are matching todos
+                    return filteredTodos.length > 0 ? (
+                      <ul className={styles.todoListWrapper}>
+                        {filteredTodos.map((todo, index) => (
+                          <Todo key={index} todoData={todo} />
+                        ))}
+                      </ul>
+                    ) : null;
+                  })()
+)}
               </div>
             </div>
           );

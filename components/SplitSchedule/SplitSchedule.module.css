@@ -22,13 +22,18 @@
   padding: .25rem .5rem;
   background-color: white;
   color: black;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   /* font-size: .85rem; */
 }
 .yourScheduleLabel {
+  font-size: .75rem;
   position: absolute;
   top: -28px;
-  background-color: red;
-  padding: .15rem .5rem;
+  background-color: rgb(0, 98, 155);
+  padding: 2px 4px;
 }
 .scheduleColumn {
   box-sizing: border-box;
@@ -47,12 +52,12 @@
   position: relative;
   outline: solid white 4px;
   z-index: 9;
-  filter: brightness(1.2);
+  /* filter: brightness(1.2); */
   /* box-shadow: 0 0 15px 0 rgb(255, 255, 255); */
   /* font-size: .85rem; */
 }
 .inactiveColumn {
-  filter: brightness(.7);
+  filter: brightness(.4);
   z-index: -1;
 }
 .eventWrapper {

@@ -6,17 +6,21 @@
     /* overflow-y: auto; */
     overflow-x: hidden;
     padding: 0 10px;
+    /* border: solid red 2px; */
 }
 .dayHeader {
   font-size: 2rem;
   margin: .5rem 0 2rem 0;
 }
+
+/* SELECT SCHEDULE TYPE STYLES */
+
 .selectScheduleTypeWrapper {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  margin: 1rem 0;
+  margin: 2rem 0 3rem 0;
 }
 .scheduleOption {
   background-color: white;
@@ -28,10 +32,25 @@
   cursor: pointer;
 }
 .yourScheduleOption {
-
+  position: relative;
 }
 .fullScheduleOption {
 
+}
+.todosNotification {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: -130px;
+  font-weight: normal;
+  background-color: rgb(255, 95, 95);
+  color: white;
+  padding: .25rem .5rem;
+  font-size: 1rem;
+  height: auto;
+}
+.todosNotification p {
+  margin: 0;
 }
 .activeOption {
   background-color: rgb(0, 94, 128);
@@ -39,16 +58,22 @@
   color: white;
   font-weight: bold;
 }
-.scheduleColumn {
+
+
+
+/* .scheduleColumn {
   border: solid yellow 4px;
-}
+} */
+
+/* EVENT BLOCKS */
 
 .eventWrapper {
+  position: relative;
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
-    width: 500px;
+    width: 100%;
     height: auto;
     /* height: 100px; */
     /* border: solid 1px black; */
@@ -58,6 +83,9 @@
     background-color: rgb(255, 255, 255);
     color: black;
     border-radius: 0
+}
+.eventWrapper:hover {
+  cursor: pointer;
 }
 .classEvent {
   background: linear-gradient(to right, #008ec7, #00578d);
@@ -69,7 +97,7 @@
   border-radius: 0px;
 }
 .winEvent {
-  background-color: rgb(148, 40, 255);
+  background-color: rgb(250, 209, 127);
   color: white;
 }
 .lunchEvent {
@@ -81,7 +109,9 @@
 .activeEvent {
 
 }
-
+.classEvent, .winEvent, .lunchEvent {
+  min-height: 100px;
+}
 .timeAndDurationWrapper {
   position: absolute;
   display: flex;
@@ -105,21 +135,30 @@
 }
 .eventContentWrapper {
   position: relative;
+  right: unset;
   font-size: 1.5rem;
   font-weight: 400;
   margin: 0;
   padding: 0;
   /* border: solid red 2px; */
-  /* width: 100%; */
-  flex-grow: 1;
+  width: 100%;
   text-align: center;
 }
 .eventTitle {
+  width: fit-content;
+  left: 50%;
+  transform: translateX(-50%);
   /* border: solid red 2px; */
+  position: relative;
+}
+.eventTitle:not(.passingEvent .eventTitle) {
+  margin: 0 0 1rem 0;
 }
 .prepPeriod {
   position: absolute;
-  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  right: -7rem;
   background: none;
   background-color: rgb(241, 76, 106);
   color: rgb(255, 255, 255);
@@ -129,9 +168,50 @@
   /* background-color: rgb(136, 227, 255);
   color: white; */
 }
+.winEvent .timeAndDurationWrapper, .winEvent .duration, .winEvent .eventTitle {
+  color: black;
+  border-color: black;
+}
 .passingEvent .eventTitle {
   font-size: 1rem;
 }
+.passingEvent .duration, .passingEvent .timeAndDuration {
+  color: black;
+  /* border: solid red 2px; */
+}
+
+/* TODO RELATED STYLES */
+
+.addTodoIcon {
+  position: absolute;
+  right: 0.5rem;
+  top: .4rem;
+  padding: .25rem;
+  background-color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
+  border-radius: 50%;
+  /* border: solid 1px rgb(182, 182, 182); */
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.7);
+  pointer-events: auto;
+  z-index: 10;
+}
+.passingEvent .addTodoIcon {
+  top: 50%;
+  transform: translateY(-50%);
+  margin-right: .15rem;
+  padding: .25rem;
+  font-size: .6rem;
+  /* color: black; */
+}
+.todoListWrapper {
+  position: relative;
+  right: 0;
+  /* background-color: rgba(0, 0, 0, .5); */
+  width: calc(100% - 7rem);
+  padding: .5rem 1.5rem;
+  margin-left: 7rem;
+}
+
 
 @media(max-width: 768px) {
   .dailyScheduleWrapper {
@@ -150,19 +230,49 @@
   }
   .eventContentWrapper {
     font-size: 1rem;
+    /* border: solid red 2px; */
   }
   .eventTitle {
     font-size: 1rem;
   }
   .timeAndDuration {
     font-size: 1rem;
+    font-size: .75rem;
   }
   .prepPeriod {
     font-size: 1rem;
+    left: -4rem;
+    right: unset;
     /* bottom: 0; */
     margin: 0;
   }
   .timeAndDurationWrapper {
     position: relative;
+  }
+  .passingEvent .timeAndDurationWrapper, .passingEvent .duration {
+    left: 0;
+    margin-left: 0;
+    width: 80px !important;
+
+  }
+  .todoListWrapper {
+    margin-left: 0;
+    width: 100%;
+    padding: 4px;
+  }
+  .selectScheduleTypeWrapper {
+    margin-bottom: 4rem;
+  }
+  .scheduleOption {
+    font-size: 1rem;
+    font-weight: 200;
+    padding: .25rem .5rem;
+  }
+  .todosNotification {
+    left: 50%;
+    top: 130%;
+    transform: translateX(-50%);
+    width: 100%;
+    font-size: .75rem;
   }
 }

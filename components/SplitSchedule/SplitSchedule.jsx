@@ -22,7 +22,7 @@ export default function SplitSchedule({ splitSchedules, lunch, preps }) {
           Your Schedule
           </div>}
           <div className={styles.lunchIndicator}>
-            {key === '6th Grade' ? key : `Lunch ${key.includes('1') ? '1' : '2'}  (7/8th)`}
+            {key === '6th Grade' ? '6th Grade Lunch' : `Lunch ${key.includes('1') ? '1' : '2'}  (7/8th)`}
           </div>
 
           {splitSchedule.map((splitEvent, nestedIndex) => {

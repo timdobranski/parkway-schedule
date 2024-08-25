@@ -5,11 +5,18 @@ import styles from "./page.module.css";
 import Form from "../components/Form/Form";
 import Schedule from "../components/Schedule/Schedule";
 import { useState, useEffect } from "react";
+import TodosInput from "../components/TodosInput/TodosInput";
 
 export default function Home() {
   const [type, setType] = useState(null);
   const [prep, setPrep] = useState([]);
   const [lunch, setLunch] = useState(null);
+
+  const [todosFormOpen, setTodosFormOpen] = useState(false);
+  const [selectedDay, setSelectedDay] = useState('');
+  const [selectedEvent, setSelectedEvent] = useState('');
+
+  const [todos, setTodos] = useState([]);
 
   const [scheduleType, setScheduleType] = useState('fullSchedule'); // yourSchedule or fullSchedule
 
@@ -41,14 +48,12 @@ export default function Home() {
       setScheduleType('fullSchedule');
     }
   }, [type]);
-
   // Save `prep` to localStorage whenever it changes
   useEffect(() => {
     if (prep.length > 0) {
       localStorage.setItem('prep', JSON.stringify(prep)); // Save as string
     }
   }, [prep]);
-
   // Save `lunch` to localStorage whenever it changes
   useEffect(() => {
     if (lunch !== null) {
@@ -61,6 +66,7 @@ export default function Home() {
       localStorage.setItem('scheduleType', scheduleType);
     }
   }, [scheduleType]);
+
 
   return (
     // <div className='app'>
@@ -80,8 +86,24 @@ export default function Home() {
           lunch={lunch}
           scheduleType={scheduleType}
           setScheduleType={setScheduleType}
+          todos={todos}
+          setTodos={setTodos}
+          todoFormOpen={todosFormOpen}
+          setTodosFormOpen={setTodosFormOpen}
+          selectedDay={selectedDay}
+          setSelectedDay={setSelectedDay}
+          selectedEvent={selectedEvent}
+          setSelectedEvent={setSelectedEvent}
           />
         }
+        {todosFormOpen && (
+          <TodosInput
+            day={selectedDay}
+            event={selectedEvent}
+            closeForm={() => setTodosFormOpen(false)}
+            setTodosFormOpen={setTodosFormOpen}
+          />
+        )}
           </>
     // </div>
   );
