@@ -1,7 +1,6 @@
 .splitWrapper {
-
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* Creates 3 equal columns */
+  grid-template-columns: 4px 1fr 1fr 1fr 4px; /* Adds 4px space on left and right */
   margin: 1rem 0;
   padding-top: 1rem;
   /* border-top: solid rgb(187, 187, 187) 4px; */
@@ -9,18 +8,27 @@
   /* border-bottom: solid white 4px; */
   /* column-gap: .25rem; */
   box-sizing: border-box;
-  /* border: solid black .125rem; */
+  overflow: visible;
+  /* border: solid yellow .125rem; */
+  position: relative;
+  /* z-index: -1; */
 }
-
+.scheduleColumn:first-child,
+.scheduleColumn:last-child {
+  display: none; /* Hides the first and last columns (which are the 4px spaces) */
+}
 .lunchIndicator {
   margin: .5rem 0;
   padding: .25rem .5rem;
   background-color: white;
   color: black;
+  /* font-size: .85rem; */
 }
-.activeColumn {
-  outline: solid white 4px;
-  z-index: 9;
+.yourScheduleLabel {
+  position: absolute;
+  top: -28px;
+  background-color: red;
+  padding: .15rem .5rem;
 }
 .scheduleColumn {
   box-sizing: border-box;
@@ -30,10 +38,23 @@
   justify-content: flex-start;
   align-items: center;
   width: 100%;
+  position: relative;
+  z-index: 9;
   /* padding: .25rem; */
   /* border: solid yellow 2px; */
 }
-
+.activeColumn {
+  position: relative;
+  outline: solid white 4px;
+  z-index: 9;
+  filter: brightness(1.2);
+  /* box-shadow: 0 0 15px 0 rgb(255, 255, 255); */
+  /* font-size: .85rem; */
+}
+.inactiveColumn {
+  filter: brightness(.7);
+  z-index: -1;
+}
 .eventWrapper {
   /* border: solid red 2px; */
   position: relative;
@@ -53,7 +74,8 @@
   margin: 0;
   /* outline: solid .125rem black; */
   /* border-top: solid black .125rem; */
-  border: solid black .125rem;
+  outline: solid black .125rem;
+  z-index: -1;
 }
 .classEvent, .lunchEvent, .winEvent {
   height: 120px;
@@ -69,7 +91,6 @@ height: 6px;
 border-radius: 0px;
 padding: 0;
 min-height: none !important;
-
 font-size: .5rem;
 }
 .winEvent {
@@ -172,4 +193,18 @@ box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.7);
 }
 .passingEvent .eventTitle {
 font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+  .splitWrapper {
+    padding-left: none;
+    padding-right: none;
+  }
+  .lunchIndicator {
+    font-size: .85rem;
+  }
+  .passingEvent .eventTitle{
+    font-size: .75rem;
+    margin: 0;
+  }
 }

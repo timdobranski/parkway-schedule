@@ -137,6 +137,9 @@
   .dailyScheduleWrapper {
     padding: 0;
   }
+  .dayHeader {
+    font-size: 1.5rem;
+  }
   .daywrapper {
     width: 95% !important;
     max-width: none;

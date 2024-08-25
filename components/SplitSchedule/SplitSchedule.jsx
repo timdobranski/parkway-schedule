@@ -14,9 +14,13 @@ export default function SplitSchedule({ splitSchedules, lunch, preps }) {
 
   return (
     <div className={styles.splitWrapper}>
+              <div></div>
       {splitSchedules && Object.entries(splitSchedules).map(([key, splitSchedule], splitIndex) => (
-        <div key={key} className={`${styles.scheduleColumn} ${lunch === key ? styles.activeColumn : ''}`}>
+        <div key={key} className={`${styles.scheduleColumn} ${lunch ? lunch === key ? styles.activeColumn : styles.inactiveColumn : ''}`}>
 
+          {lunch && lunch === key && <div className={styles.yourScheduleLabel}>
+          Your Schedule
+          </div>}
           <div className={styles.lunchIndicator}>
             {key === '6th Grade' ? key : `Lunch ${key.includes('1') ? '1' : '2'}  (7/8th)`}
           </div>
@@ -49,7 +53,7 @@ export default function SplitSchedule({ splitSchedules, lunch, preps }) {
 
                 <div className={styles.eventContentWrapper}>
                   <p className={styles.eventTitle}>
-                    {splitEvent.type === 'passing' ? '' : splitEvent.title}
+                    {splitEvent.title}
                   </p>
 
                   <div className={styles.timeAndDurationWrapper}>
@@ -68,12 +72,9 @@ export default function SplitSchedule({ splitSchedules, lunch, preps }) {
               </div>
             );
           })}
-        {lunch && lunch === key && <div className={styles.lunchIndicator}>
-          Your Schedule
-          </div>}
-
         </div>
       ))}
+              <div></div>
     </div>
   );
 }
