@@ -3,21 +3,14 @@
 import styles from './TodosInput.module.css';
 import { useState, useEffect } from 'react';
 
-export default function TodosInput({ day, event, setTodosFormOpen }) {
+export default function TodosInput({ day, event, setTodosFormOpen, setTodos }) {
   const [description, setDescription] = useState('');
   const [frequency, setFrequency] = useState('dayOnly');
-  const [todos, setTodos] = useState([]);
 
   const addTodoToLocalstorage = () => {
-    const todos = JSON.parse(localStorage.getItem('todos')) || [];
-    todos.push({
-      day,
-      event,
-      description,
-      frequency,
-      id: Date.now()
+    setTodos((prev) => {
+      return [...prev, { day, event, description, frequency, id: Date.now() }];
     });
-    localStorage.setItem('todos', JSON.stringify(todos));
     setTodosFormOpen(false);
   }
 

@@ -5,12 +5,12 @@ import { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash, faPencil } from '@fortawesome/free-solid-svg-icons';
 
-export default function Todo({ key, todoData }) {
+export default function Todo({ todoData, setTodos }) {
 
   const deleteTodo = () => {
-    const todos = JSON.parse(localStorage.getItem('todos'));
-    const newTodos = todos.filter(todo => todo.description !== todoData.description);
-    localStorage.setItem('todos', JSON.stringify(newTodos));
+    setTodos((prevTodos) => {
+      return prevTodos.filter((todo) => todo.id !== todoData.id);
+    });
   }
 
   return(

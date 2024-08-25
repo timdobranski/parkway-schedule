@@ -9,7 +9,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import Day from '../Day/Day';
 
-export default function Schedule({ type, prep, lunch, scheduleType, setScheduleType, todosFormOpen, setTodosFormOpen, selectedDay, setSelectedDay, selectedEvent, setSelectedEvent }) {
+export default function Schedule({
+  type, prep, lunch, scheduleType, setScheduleType, todosFormOpen, setTodosFormOpen, selectedDay, setSelectedDay, selectedEvent, setSelectedEvent, todos, setTodos }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [flattenedSchedule, setFlattenedSchedule] = useState([]);
 
@@ -62,6 +63,8 @@ export default function Schedule({ type, prep, lunch, scheduleType, setScheduleT
               setSelectedDay={setSelectedDay}
               selectedEvent={selectedEvent}
               setSelectedEvent={setSelectedEvent}
+              todos={todos}
+              setTodos={setTodos}
             />
 
         </div>

@@ -16,7 +16,10 @@ export default function Home() {
   const [selectedDay, setSelectedDay] = useState('');
   const [selectedEvent, setSelectedEvent] = useState('');
 
-  const [todos, setTodos] = useState([]);
+  const [todos, setTodos] = useState(() => {
+    const savedTodos = localStorage.getItem('todos');
+    return savedTodos ? JSON.parse(savedTodos) : []; // If there are saved todos, use them; otherwise, start with an empty array
+  });
 
   const [scheduleType, setScheduleType] = useState('fullSchedule'); // yourSchedule or fullSchedule
 
@@ -68,6 +71,14 @@ export default function Home() {
   }, [scheduleType]);
 
 
+  useEffect(() => {
+    if (todos.length > 0) {
+      localStorage.setItem('todos', JSON.stringify(todos)); // Save todos when they are not empty
+    } else {
+      localStorage.removeItem('todos'); // Remove from localStorage if todos are empty
+    }
+  }, [todos]);
+
   return (
     // <div className='app'>
     <>
@@ -98,6 +109,8 @@ export default function Home() {
         }
         {todosFormOpen && (
           <TodosInput
+            todos={todos}
+            setTodos={setTodos}
             day={selectedDay}
             event={selectedEvent}
             closeForm={() => setTodosFormOpen(false)}

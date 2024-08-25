@@ -8,24 +8,17 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
 import Todo from '../Todo/Todo'
 
-export default function Day({ dayInfo, type, prep, lunch, scheduleType, setScheduleType, todosFormOpen, setTodosFormOpen, selectedDay, setSelectedDay, selectedEvent, setSelectedEvent }) {
-  const [todos, setTodos] = useState([]);
+export default function Day({
+  dayInfo, type, prep, lunch, scheduleType, setScheduleType, todosFormOpen, setTodosFormOpen, selectedDay, setSelectedDay, selectedEvent, setSelectedEvent, todos, setTodos }) {
 
-  useEffect(() => {
-    const savedTodos = localStorage.getItem('todos');
-    if (savedTodos) {
-      setTodos(JSON.parse(savedTodos)); // Parse the stored JSON string and set it as the todos state
-    }
-  }, []);
-
-  useEffect(() => {
-    console.log('todos changed: ', todos);
-  }, [todos]);
 
   const handleScheduleTypeChange = (type) => {
     setScheduleType(type);
   };
 
+  useEffect(() => {
+    console.log('todos changed in Day component: ', todos);
+  }, [todos]);
 
 
   return (
@@ -125,7 +118,7 @@ export default function Day({ dayInfo, type, prep, lunch, scheduleType, setSched
                     return filteredTodos.length > 0 ? (
                       <ul className={styles.todoListWrapper}>
                         {filteredTodos.map((todo, index) => (
-                          <Todo key={index} todoData={todo} />
+                          <Todo key={index} todoData={todo} setTodos={setTodos} />
                         ))}
                       </ul>
                     ) : null;
@@ -189,7 +182,7 @@ export default function Day({ dayInfo, type, prep, lunch, scheduleType, setSched
                     return filteredTodos.length > 0 ? (
                       <ul className={styles.todoListWrapper}>
                         {filteredTodos.map((todo, index) => (
-                          <Todo key={index} todoData={todo} />
+                          <Todo key={index} todoData={todo} setTodos={setTodos} />
                         ))}
                       </ul>
                     ) : null;

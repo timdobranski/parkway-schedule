@@ -233,11 +233,10 @@
     /* border: solid red 2px; */
   }
   .eventTitle {
-    font-size: 1rem;
+    font-size: 1.5rem;
   }
   .timeAndDuration {
     font-size: 1rem;
-    font-size: .75rem;
   }
   .prepPeriod {
     font-size: 1rem;
@@ -274,5 +273,25 @@
     transform: translateX(-50%);
     width: 100%;
     font-size: .75rem;
+  }
+}
+@media(max-width: 375px) {
+  .eventContentWrapper {
+    font-size: 1rem;
+  }
+  .eventTitle {
+    font-size: 1.25rem;
+  }
+  .timeAndDuration {
+    font-size: .75rem;
+  }
+  .prepPeriod {
+    font-size: .75rem;
+  }
+  .passingEvent .timeAndDurationWrapper, .passingEvent .duration {
+    width: 60px !important;
+  }
+  .todosNotification {
+    font-size: .5rem;
   }
 }
