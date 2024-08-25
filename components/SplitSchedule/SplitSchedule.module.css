@@ -26,10 +26,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 40px;
+  /* width: 100%; */
   /* font-size: .85rem; */
 }
 .yourScheduleLabel {
-  font-size: .75rem;
+  font-size: 1rem;
   position: absolute;
   top: -28px;
   background-color: rgb(0, 98, 155);
@@ -57,7 +59,7 @@
   /* font-size: .85rem; */
 }
 .inactiveColumn {
-  filter: brightness(.4);
+  filter: brightness(.7);
   z-index: -1;
 }
 .eventWrapper {
@@ -210,4 +212,13 @@ box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.7);
     font-size: .85rem;
   }
 
+}
+
+@media(max-width: 375px) {
+  .splitWrapper {
+    margin-top: 2.5rem;
+  }
+  .yourScheduleLabel {
+    top: -50px;
+  }
 }

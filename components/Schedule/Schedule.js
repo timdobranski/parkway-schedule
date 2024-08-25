@@ -10,7 +10,8 @@ import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons
 import Day from '../Day/Day';
 
 export default function Schedule({
-  type, prep, lunch, scheduleType, setScheduleType, todosFormOpen, setTodosFormOpen, selectedDay, setSelectedDay, selectedEvent, setSelectedEvent, todos, setTodos }) {
+  type, prep, lunch, scheduleType, setScheduleType, todosFormOpen, setTodosFormOpen, selectedDay,
+  setSelectedDay, selectedEvent, setSelectedEvent, todos, setTodos, setTodoEditId }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [flattenedSchedule, setFlattenedSchedule] = useState([]);
 
@@ -65,6 +66,7 @@ export default function Schedule({
               setSelectedEvent={setSelectedEvent}
               todos={todos}
               setTodos={setTodos}
+              setTodoEditId={setTodoEditId}
             />
 
         </div>

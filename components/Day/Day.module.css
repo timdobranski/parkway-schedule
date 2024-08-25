@@ -225,6 +225,9 @@ top: 0;
   pointer-events: auto;
   z-index: 10;
 }
+.addTodoIcon:hover {
+  cursor: pointer;
+}
 .passingEvent .addTodoIcon {
   top: 50%;
   transform: translateY(-50%);

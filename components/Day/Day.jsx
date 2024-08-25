@@ -9,7 +9,8 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons'
 import Todo from '../Todo/Todo'
 
 export default function Day({
-  dayInfo, type, prep, lunch, scheduleType, setScheduleType, todosFormOpen, setTodosFormOpen, selectedDay, setSelectedDay, selectedEvent, setSelectedEvent, todos, setTodos }) {
+  dayInfo, type, prep, lunch, scheduleType, setScheduleType, todosFormOpen, setTodosFormOpen, selectedDay,
+  setSelectedDay, selectedEvent, setSelectedEvent, todos, setTodos, setTodoEditId }) {
 
 
   const handleScheduleTypeChange = (type) => {
@@ -113,7 +114,7 @@ export default function Day({
                     return filteredTodos.length > 0 ? (
                       <ul className={styles.todoListWrapper}>
                         {filteredTodos.map((todo, index) => (
-                          <Todo key={index} todoData={todo} setTodos={setTodos} />
+                          <Todo key={index} todoData={todo} setTodos={setTodos} setTodosFormOpen={setTodosFormOpen} setTodoEditId={setTodoEditId} />
                         ))}
                       </ul>
                     ) : null;
@@ -136,7 +137,7 @@ export default function Day({
                   event.type === 'passing' ? styles.passingEvent : ''}
               `}
             >
-                {event.type !== 'passing' &&<FontAwesomeIcon
+                {event.type !== 'passing' && scheduleType === 'yourSchedule' && <FontAwesomeIcon
                   icon={faPlus}
                   className={styles.addTodoIcon}
                   onClick={() => {
@@ -178,12 +179,12 @@ export default function Day({
                     return filteredTodos.length > 0 ? (
                       <ul className={styles.todoListWrapper}>
                         {filteredTodos.map((todo, index) => (
-                          <Todo key={index} todoData={todo} setTodos={setTodos} />
+                          <Todo key={index} todoData={todo} setTodos={setTodos} setTodoEditId={setTodoEditId} setTodosFormOpen={setTodosFormOpen} />
                         ))}
                       </ul>
                     ) : null;
                   })()
-)}
+                )}
               </div>
             </div>
           );

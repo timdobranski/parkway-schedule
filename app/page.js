@@ -15,6 +15,7 @@ export default function Home() {
   const [todosFormOpen, setTodosFormOpen] = useState(false);
   const [selectedDay, setSelectedDay] = useState('');
   const [selectedEvent, setSelectedEvent] = useState('');
+  const [todoEditId, setTodoEditId] = useState(null);
 
   const [todos, setTodos] = useState([]);
   const [scheduleType, setScheduleType] = useState(() => {
@@ -40,7 +41,7 @@ export default function Home() {
         setScheduleType('fullSchedule');
       }
     }
-  }, []); // Empty dependency array ensures this runs once on mount
+  }, []);
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -132,6 +133,7 @@ export default function Home() {
           setSelectedDay={setSelectedDay}
           selectedEvent={selectedEvent}
           setSelectedEvent={setSelectedEvent}
+          setTodoEditId={setTodoEditId}
           />
         }
         {todosFormOpen && (
@@ -140,7 +142,8 @@ export default function Home() {
             setTodos={setTodos}
             day={selectedDay}
             event={selectedEvent}
-            closeForm={() => setTodosFormOpen(false)}
+            todoEditId={todoEditId}
+            setTodoEditId={setTodoEditId}
             setTodosFormOpen={setTodosFormOpen}
           />
         )}
