@@ -191,8 +191,9 @@ margin: 1rem 0;
 padding: .25rem .5rem;
 box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.7);
 }
-.passingEvent .eventTitle {
-font-size: 1rem;
+.passingEvent .eventTitle{
+  font-size: .75rem;
+  margin: 0;
 }
 
 @media (max-width: 768px) {
@@ -203,8 +204,5 @@ font-size: 1rem;
   .lunchIndicator {
     font-size: .85rem;
   }
-  .passingEvent .eventTitle{
-    font-size: .75rem;
-    margin: 0;
-  }
+
 }
