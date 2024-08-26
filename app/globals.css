@@ -20,6 +20,11 @@
   font-weight: bold; /* or 700 */
 }
 
+:root {
+  --classBlockBackground: rgb(0, 158, 206);
+
+}
+
 /* WEBKIT SCROLLBAR */
 
 /* The entire scrollbar */

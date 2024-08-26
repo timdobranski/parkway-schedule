@@ -21,6 +21,7 @@
   margin: .5rem 0;
   padding: .25rem .5rem;
   background-color: rgb(255, 255, 255);
+  border-radius: 5px;
   color: black;
   height: 40px;
   width: 90%;
@@ -36,7 +37,7 @@
   font-size: 1rem;
   position: absolute;
   top: -28px;
-  background-color: rgb(0, 98, 155);
+  background-color: rgb(43, 177, 255);
   padding: 2px 4px;
 }
 .scheduleColumn {
@@ -56,6 +57,7 @@
   position: relative;
   outline: solid white 4px;
   z-index: 9;
+  border-radius: 10px;
   /* filter: brightness(1.2); */
   /* box-shadow: 0 0 15px 0 rgb(255, 255, 255); */
   /* font-size: .85rem; */
@@ -90,7 +92,8 @@
   height: 120px;
 }
 .classEvent {
-background: linear-gradient(to right, #008ec7, #00578d);
+/* background: linear-gradient(to right, #008ec7, #00578d); */
+background: var(--classBlockBackground);
 color: white;
 min-height: 80px;
 }

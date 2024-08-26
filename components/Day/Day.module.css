@@ -23,7 +23,7 @@
 }
 .scheduleOption {
   background-color: white;
-  color: black;
+  color: rgb(162, 162, 162);
   padding: .5rem 1rem;
   margin: 0 1px;
 }
@@ -86,7 +86,8 @@
     border-radius: 0
 }
 .classEvent {
-  background: linear-gradient(to right, #008ec7, #00578d);
+  /* background: linear-gradient(to right, #008ec7, #00578d); */
+  background: var(--classBlockBackground);
   color: white;
 }
 .passingEvent {
@@ -133,10 +134,11 @@ top: 0;
 }
 .duration {
   border-top: solid 1px rgb(132, 255, 196);
+  border-top: solid 1px rgb(0, 0, 0);
   padding-top: 4px;
   font-size: 1rem;
   color: rgb(253, 255, 129);
-
+  color: white;
 }
 .eventContentWrapper {
   position: relative;
