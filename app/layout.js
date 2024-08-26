@@ -1,5 +1,7 @@
 import "./globals.css";
 import Header from '../components/Header/Header'
+import { Analytics } from "@vercel/analytics/react"
+
 
 export const metadata = {
   title: "Parkway Schedule Help",
@@ -12,7 +14,7 @@ export default function RootLayout({ children }) {
       <body className='body'>
       <div className='app'>
         <Header />
-
+        <Analytics />
         {children}
         </div>
         </body>
