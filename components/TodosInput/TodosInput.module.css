@@ -16,7 +16,7 @@
   transform: translate(-50%, -50%);
   width: 80%;
   max-width: 600px;
-  height: 600px;
+  /* height: 600px; */
   background: linear-gradient(to left, rgb(0, 129, 181) 0%, rgb(0, 78, 109) 100%);
   border-radius: 4px;
   padding: 1rem;
