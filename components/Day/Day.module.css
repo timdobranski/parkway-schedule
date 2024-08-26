@@ -19,7 +19,7 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  margin: 2rem 0 3rem 0;
+  margin: 2rem 0 4rem 0;
 }
 .scheduleOption {
   background-color: white;
@@ -36,11 +36,12 @@
 .fullScheduleOption {
 
 }
-/* .todosNotification {
+.todosNotification {
   position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  left: -130px;
+  top: 145%;
+  transform: translate(-50%, -50%);
+  left: 95%;
+  width: 300px;
   font-weight: normal;
   background-color: rgb(255, 95, 95);
   color: white;
@@ -50,7 +51,7 @@
 }
 .todosNotification p {
   margin: 0;
-} */
+}
 .activeOption {
   background-color: rgb(0, 94, 128);
   outline: solid 2px red;
@@ -332,19 +333,19 @@ top: 0;
     padding: 4px;
   }
   .selectScheduleTypeWrapper {
-    margin-bottom: 2rem;
+    margin-bottom: 4rem;
   }
   .scheduleOption {
     font-size: 1.25rem;
     font-weight: 400;
     padding: .5rem 1rem;
   }
+
   .todosNotification {
-    left: 50%;
-    top: 130%;
-    transform: translateX(-50%);
-    width: 100%;
-    font-size: .75rem;
+    font-size: 1rem;
+    top: 150%;
+    left: 100%;
+    width: 320px;
   }
 }
 @media(max-width: 375px) {
@@ -368,6 +369,6 @@ top: 0;
     width: 60px !important;
   }
   .todosNotification {
-    font-size: .5rem;
+    /* font-size: .5rem; */
   }
 }

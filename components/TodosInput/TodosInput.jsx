@@ -99,6 +99,9 @@ export default function TodosInput({ todos, day, event, setTodosFormOpen, setTod
         <button className={styles.submitButton} onClick={handleSubmit}>
           {todoEditId ? 'UPDATE TO-DO' : 'ADD TO-DO'}
         </button>
+        <button className={styles.backButton} onClick={closeForm}>
+          BACK
+        </button>
       </div>
     </div>
   );

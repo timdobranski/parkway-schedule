@@ -42,7 +42,7 @@ export default function Day({
           }}
         >
           YOUR SCHEDULE
-
+          <p className={styles.todosNotification}>NEW! Add reminders to your schedule</p>
         </div>
         <div
           className={`${styles.scheduleOption} ${styles.fullScheduleOption} ${scheduleType === 'fullSchedule' ? styles.activeOption : ''}`}

@@ -44,7 +44,7 @@
 .statusIndicator:not(.empty) {
   background-color: rgb(0, 129, 181);
   color: white;
-  border: solid white 1px;
+  border: solid rgb(182, 212, 255) 1px;
 }
 .empty {
   background-color: rgb(246, 77, 105);

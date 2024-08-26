@@ -86,7 +86,7 @@
   width: 75%;
   padding: .5rem .25rem;
 }
-.submitButton {
+.submitButton, .backButton {
   width: 200px;
   padding: .5rem;
   margin: 3rem 0 1rem 0;
@@ -97,4 +97,87 @@
   border: none;
   font-weight: 200;
   cursor: pointer;
+}
+.backButton {
+  background-color: rgb(255, 255, 255);
+  color: black;
+}
+@media(max-width: 768px) {
+  .contentWrapper {
+    width: 90%;
+    /* max-height: 80vh; */
+    border-radius: 0;
+    padding: 0px;
+    height: fit-content;
+    min-height: 70%;
+  }
+  .modalTitle {
+    font-size: 1.75rem;
+  }
+  .descriptionInput {
+    width: 92%;
+    border-radius: 10px;
+    padding: .5rem;
+  }
+  .frequencySelect {
+    width: 100%;
+  }
+  .submitButton {
+    width: 150px;
+  }
+  .inputLabel, .frequencyInputLabel {
+    margin-bottom: .5rem;
+    font-size: 1.50rem;
+  }
+  .checkboxGroup {
+    width: 100%;
+    /* border: solid white 2px; */
+  }
+  .checkboxLabel {
+    font-size: 1.25rem;
+    font-weight: 400;
+  }
+  .submitButton, .backButton {
+    width: 150px;
+    padding: .25rem;
+    margin: 1rem 0;
+  }
+}
+@media(max-width: 375px) {
+  .contentWrapper {
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+    padding: 0px;
+  }
+  .modalTitle {
+    font-size: 1.5rem;
+  }
+  .descriptionInput {
+    width: 92%;
+    border-radius: 10px;
+    padding: .5rem;
+  }
+  .frequencySelect {
+    width: 100%;
+  }
+  .submitButton {
+    width: 150px;
+  }
+  .inputLabel, .frequencyInputLabel {
+    margin-bottom: .5rem;
+  }
+  .checkboxGroup {
+    width: 100%;
+    /* border: solid white 2px; */
+  }
+  .checkboxLabel {
+    font-size: 1rem;
+    font-weight: 400;
+  }
+  .submitButton {
+    width: 150px;
+    padding: .25rem;
+    margin: 1rem 0;
+  }
 }
